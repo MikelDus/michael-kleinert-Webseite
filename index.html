@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>In 30 Minuten dein erstes authentisches Video – Michael Kleinert</title>
 <meta name="description" content="Der kostenlose Schritt-für-Schritt-Guide, mit dem du deine Nervosität ablegst und mit dem Smartphone ein Video drehst, das deine Wunschkunden wirklich anspricht.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <style>
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url('assets/fonts/inter-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Sora';font-style:normal;font-weight:400 800;font-display:swap;src:url('assets/fonts/sora-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
 :root{
   --blue:#1b75bb;
   --blue-2:#2b8ad6;
@@ -435,6 +435,25 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
 .modal button{background:var(--blue);color:#fff;border:none;border-radius:12px;padding:14px 28px;font-family:var(--display);font-weight:600;font-size:1rem;cursor:pointer}
 .modal button:hover{background:var(--blue-deep)}
 
+/* ===== Cookie banner ===== */
+.cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:220;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow-xl);padding:22px 24px;max-width:640px;margin:0 auto;transform:translateY(140%);opacity:0;transition:transform .5s var(--ease),opacity .5s var(--ease);pointer-events:none}
+.cookie-banner.show{transform:translateY(0);opacity:1;pointer-events:auto}
+.cookie-inner{display:flex;flex-direction:column;gap:16px}
+.cookie-text b{font-family:var(--display);font-weight:700;font-size:1rem;color:var(--blue-ink)}
+.cookie-text p{font-size:.9rem;color:var(--muted);margin-top:6px}
+.cookie-text a{color:var(--blue);text-decoration:underline}
+.cookie-actions{display:flex;gap:10px;flex-wrap:wrap}
+.cookie-btn{font-family:var(--display);font-weight:700;font-size:.92rem;border-radius:12px;padding:12px 20px;cursor:pointer;border:none;background:var(--cta);color:#fff;flex:1;min-width:150px;transition:background .2s}
+.cookie-btn:hover{background:var(--cta-hover)}
+.cookie-btn.ghost{background:#fff;color:var(--blue-ink);border:1.5px solid var(--line)}
+.cookie-btn.ghost:hover{background:var(--mist)}
+@media(max-width:480px){.cookie-banner{padding:18px;left:10px;right:10px;bottom:10px}}
+
+/* ===== Video consent (inside lightbox, shown until YouTube is approved) ===== */
+.video-consent{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:32px;text-align:center;background:linear-gradient(160deg,#0f2f4d,#0b2136);color:#fff}
+.video-consent p{color:#dcebf7;font-size:.94rem;max-width:30em;margin:0}
+.video-consent a{color:#ffb14d;text-decoration:underline}
+
 /* ===== Responsive ===== */
 @media(max-width:960px){
   .hero-grid,.problem-grid,.solution-grid,.about-grid,.faq-grid{grid-template-columns:1fr;gap:42px}
@@ -818,6 +837,7 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
         <a href="tel:+491705817102">Telefon</a>
         <a href="rechtliches.html">Impressum</a>
         <a href="rechtliches.html#datenschutz">Datenschutz</a>
+        <a href="#" onclick="openCookieSettings(event)">Cookie-Einstellungen</a>
       </div>
     </div>
     <div class="foot-bottom"><span>© <span id="year"></span> Michael Kleinert · Video-Coaching und Produktion</span><span>Düsseldorf · Rheinland/NRW</span></div>
@@ -839,6 +859,20 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
     <h3>Super, geschafft!</h3>
     <p>Schau gleich in dein Postfach – dein Video-Guide ist unterwegs! (Bitte auch den Spam-Ordner checken.)</p>
     <button onclick="document.getElementById('modal').classList.remove('show')">Alles klar</button>
+  </div>
+</div>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen">
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      <b>Cookies &amp; externe Inhalte</b>
+      <p>Diese Seite verwendet nur technisch notwendige Funktionen. Für das eingebettete YouTube-Video werden – erst wenn du es aktiv abspielst bzw. hier zustimmst – Daten an Google übertragen. Mehr dazu in der <a href="rechtliches.html#datenschutz">Datenschutzerklärung</a>.</p>
+    </div>
+    <div class="cookie-actions">
+      <button class="cookie-btn ghost" id="cookieReject" type="button">Nur notwendige</button>
+      <button class="cookie-btn" id="cookieAccept" type="button">Alle akzeptieren</button>
+    </div>
   </div>
 </div>
 
@@ -922,10 +956,29 @@ function nextSlide(){if(Math.abs(track.scrollLeft+track.clientWidth-track.scroll
 function stopAuto(){if(auto)clearInterval(auto);}
 track.addEventListener('pointerdown',stopAuto);track.addEventListener('mouseenter',stopAuto);
 
-/* Video lightbox */
+/* Cookie consent */
+var COOKIE_KEY='mk_cookie_consent';
+function getConsent(){try{return localStorage.getItem(COOKIE_KEY);}catch(e){return null;}}
+function setConsent(v){try{localStorage.setItem(COOKIE_KEY,v);}catch(e){}}
+function hasMediaConsent(){return getConsent()==='accepted';}
+var cookieBanner=document.getElementById('cookieBanner');
+if(cookieBanner && (!getConsent() || location.search.indexOf('cookie-einstellungen')>-1)){cookieBanner.classList.add('show');}
+function openCookieSettings(e){if(e)e.preventDefault();cookieBanner.classList.add('show');}
+document.getElementById('cookieAccept').addEventListener('click',function(){setConsent('accepted');cookieBanner.classList.remove('show');});
+document.getElementById('cookieReject').addEventListener('click',function(){setConsent('rejected');cookieBanner.classList.remove('show');});
+
+/* Video lightbox (gated behind cookie/YouTube consent) */
+var videoConsentSession=false;
+var YT_IFRAME='<iframe src="https://www.youtube-nocookie.com/embed/ec-qw7Z_cTQ?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="Michael Kleinert – Video" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>';
 function openVideo(){
   var lb=document.getElementById('lightbox');
-  document.getElementById('lbSlot').innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/ec-qw7Z_cTQ?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="Michael Kleinert – Video" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>';
+  var slot=document.getElementById('lbSlot');
+  if(hasMediaConsent()||videoConsentSession){
+    slot.innerHTML=YT_IFRAME;
+  }else{
+    slot.innerHTML='<div class="video-consent"><p>Zum Abspielen wird eine Verbindung zu YouTube (Google Ireland Limited) hergestellt. Dabei können Daten an Google übertragen werden. Mehr dazu in der <a href="rechtliches.html#datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p><button class="cta-btn" id="loadVideoBtn" type="button"><span>Video laden &amp; abspielen</span></button></div>';
+    document.getElementById('loadVideoBtn').addEventListener('click',function(){videoConsentSession=true;slot.innerHTML=YT_IFRAME;});
+  }
   lb.classList.add('show');document.body.style.overflow='hidden';
 }
 function closeVideo(){var lb=document.getElementById('lightbox');lb.classList.remove('show');document.getElementById('lbSlot').innerHTML='';document.body.style.overflow='';}
