@@ -216,7 +216,7 @@ section{padding:100px 0;position:relative}
           mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .mq + .mq{margin-top:16px}
 .mq-row{display:flex;gap:12px;width:max-content}
-.mq-row.l{animation:mqL 44s linear infinite}
+.mq-row.l{animation:mqL 75s linear infinite}
 .mq-row.r{animation:mqR 50s linear infinite}
 .mq:hover .mq-row{animation-play-state:paused}
 @keyframes mqL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -224,7 +224,7 @@ section{padding:100px 0;position:relative}
 .clip{position:relative;flex-shrink:0;border-radius:14px;overflow:hidden;cursor:pointer;
   display:flex;align-items:flex-end;box-shadow:var(--shadow-md);transition:transform .3s var(--ease)}
 .clip:hover{transform:scale(1.04)}
-.clip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.clip img,.clip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hoch{width:124px;aspect-ratio:9/16}
 .quer{width:220px;aspect-ratio:16/9}
 .g1{background:linear-gradient(150deg,#2e4a6b,#16263d)}
@@ -550,26 +550,36 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
   <div class="wrap sr-head reveal">
     <span class="sec-eyebrow orange">Showreel</span>
     <h2 class="sec-h">Ein kleiner Einblick in meine Videoarbeit</h2>
-    <p class="lede" style="margin:0 auto">Oben Hochkant-Clips für Social Media, unten Querformat für Events &amp; Feiern. <span style="opacity:.7">(Platzhalter – hier kommen bald echte Videos rein.)</span></p>
+    <p class="lede" style="margin:0 auto">Oben Hochkant-Clips für Social Media, unten Querformat für Events &amp; Feiern. <span style="opacity:.7">(Querformat-Reihe: Platzhalter, hier kommen bald echte Videos rein.)</span></p>
   </div>
 
   <!-- Reihe 1: Hochkant 9:16, läuft nach links -->
   <div class="mq">
-    <div class="mq-row l">
-      <div class="clip hoch g1"><div class="cap"><b>Instagram Reel Café</b><span>Social Media</span></div></div>
-      <div class="clip hoch g2"><div class="cap"><b>TikTok Produkt-Clip</b><span>Social Media</span></div></div>
-      <div class="clip hoch g3"><div class="cap"><b>Story-Serie Friseur</b><span>Social Media</span></div></div>
-      <div class="clip hoch g4"><div class="cap"><b>Reel Fitnessstudio</b><span>Social Media</span></div></div>
-      <div class="clip hoch g5"><div class="cap"><b>YouTube Short Auto</b><span>Social Media</span></div></div>
-      <div class="clip hoch g6"><div class="cap"><b>Recruiting-Reel</b><span>Social Media</span></div></div>
-      <div class="clip hoch g7"><div class="cap"><b>Behind the Scenes</b><span>Social Media</span></div></div>
-      <div class="clip hoch g1"><div class="cap"><b>Instagram Reel Café</b><span>Social Media</span></div></div>
-      <div class="clip hoch g2"><div class="cap"><b>TikTok Produkt-Clip</b><span>Social Media</span></div></div>
-      <div class="clip hoch g3"><div class="cap"><b>Story-Serie Friseur</b><span>Social Media</span></div></div>
-      <div class="clip hoch g4"><div class="cap"><b>Reel Fitnessstudio</b><span>Social Media</span></div></div>
-      <div class="clip hoch g5"><div class="cap"><b>YouTube Short Auto</b><span>Social Media</span></div></div>
-      <div class="clip hoch g6"><div class="cap"><b>Recruiting-Reel</b><span>Social Media</span></div></div>
-      <div class="clip hoch g7"><div class="cap"><b>Behind the Scenes</b><span>Social Media</span></div></div>
+    <div class="mq-row l" id="hochRow">
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/locker-werden.mp4" type="video/mp4"><source src="assets/videos/locker-werden.webm" type="video/webm"></video><div class="cap"><b>Locker werden</b><span>Video-Coaching</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/best-of.mp4" type="video/mp4"><source src="assets/videos/best-of.webm" type="video/webm"></video><div class="cap"><b>Best of</b><span>Showreel</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/video-knowhow.mp4" type="video/mp4"><source src="assets/videos/video-knowhow.webm" type="video/webm"></video><div class="cap"><b>Video-Knowhow</b><span>Video-Coaching</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/kamera-coaching.mp4" type="video/mp4"><source src="assets/videos/kamera-coaching.webm" type="video/webm"></video><div class="cap"><b>Kamera-Coaching</b><span>Video-Coaching</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/performer.mp4" type="video/mp4"><source src="assets/videos/performer.webm" type="video/webm"></video><div class="cap"><b>Performer</b><span>Video-Produktion</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/outdoor-events.mp4" type="video/mp4"><source src="assets/videos/outdoor-events.webm" type="video/webm"></video><div class="cap"><b>Outdoor Events</b><span>Events</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/networking.mp4" type="video/mp4"><source src="assets/videos/networking.webm" type="video/webm"></video><div class="cap"><b>Networking</b><span>Business</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/video-coachings.mp4" type="video/mp4"><source src="assets/videos/video-coachings.webm" type="video/webm"></video><div class="cap"><b>Video-Coachings</b><span>Video-Coaching</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/team-performance.mp4" type="video/mp4"><source src="assets/videos/team-performance.webm" type="video/webm"></video><div class="cap"><b>Team Performance</b><span>Business</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/talk-formate.mp4" type="video/mp4"><source src="assets/videos/talk-formate.webm" type="video/webm"></video><div class="cap"><b>Talk-Formate</b><span>Video-Produktion</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/shootings.mp4" type="video/mp4"><source src="assets/videos/shootings.webm" type="video/webm"></video><div class="cap"><b>Shootings</b><span>Video-Produktion</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/persoenlichkeit.mp4" type="video/mp4"><source src="assets/videos/persoenlichkeit.webm" type="video/webm"></video><div class="cap"><b>Persönlichkeit</b><span>Video-Coaching</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/locker-werden.mp4" type="video/mp4"><source src="assets/videos/locker-werden.webm" type="video/webm"></video><div class="cap"><b>Locker werden</b><span>Video-Coaching</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/best-of.mp4" type="video/mp4"><source src="assets/videos/best-of.webm" type="video/webm"></video><div class="cap"><b>Best of</b><span>Showreel</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/video-knowhow.mp4" type="video/mp4"><source src="assets/videos/video-knowhow.webm" type="video/webm"></video><div class="cap"><b>Video-Knowhow</b><span>Video-Coaching</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/kamera-coaching.mp4" type="video/mp4"><source src="assets/videos/kamera-coaching.webm" type="video/webm"></video><div class="cap"><b>Kamera-Coaching</b><span>Video-Coaching</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/performer.mp4" type="video/mp4"><source src="assets/videos/performer.webm" type="video/webm"></video><div class="cap"><b>Performer</b><span>Video-Produktion</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/outdoor-events.mp4" type="video/mp4"><source src="assets/videos/outdoor-events.webm" type="video/webm"></video><div class="cap"><b>Outdoor Events</b><span>Events</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/networking.mp4" type="video/mp4"><source src="assets/videos/networking.webm" type="video/webm"></video><div class="cap"><b>Networking</b><span>Business</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/video-coachings.mp4" type="video/mp4"><source src="assets/videos/video-coachings.webm" type="video/webm"></video><div class="cap"><b>Video-Coachings</b><span>Video-Coaching</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/team-performance.mp4" type="video/mp4"><source src="assets/videos/team-performance.webm" type="video/webm"></video><div class="cap"><b>Team Performance</b><span>Business</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/talk-formate.mp4" type="video/mp4"><source src="assets/videos/talk-formate.webm" type="video/webm"></video><div class="cap"><b>Talk-Formate</b><span>Video-Produktion</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/shootings.mp4" type="video/mp4"><source src="assets/videos/shootings.webm" type="video/webm"></video><div class="cap"><b>Shootings</b><span>Video-Produktion</span></div></div>
+      <div class="clip hoch"><video muted loop playsinline preload="auto"><source src="assets/videos/persoenlichkeit.mp4" type="video/mp4"><source src="assets/videos/persoenlichkeit.webm" type="video/webm"></video><div class="cap"><b>Persönlichkeit</b><span>Video-Coaching</span></div></div>
     </div>
   </div>
 
@@ -913,6 +923,18 @@ function parallax(){
   chips.forEach(function(c,i){c.style.transform='translateY('+(y*(i?0.05:-0.05))+'px)';});
 }
 if(!reduce){addEventListener('scroll',function(){requestAnimationFrame(parallax);});parallax();}
+
+/* Showreel: nur sichtbare Clips abspielen (spart Akku/Daten) */
+if(!reduce && 'IntersectionObserver' in window){
+  var showreelVideos=document.querySelectorAll('.clip video');
+  var svio=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.play().catch(function(){}); }
+      else{ en.target.pause(); }
+    });
+  },{root:null,rootMargin:'150px',threshold:0});
+  showreelVideos.forEach(function(v){svio.observe(v);});
+}
 
 /* Scroll reveals */
 var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.15});
