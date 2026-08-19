@@ -217,7 +217,7 @@ section{padding:100px 0;position:relative}
 .mq + .mq{margin-top:16px}
 .mq-row{display:flex;gap:12px;width:max-content}
 .mq-row.l{animation:mqL 75s linear infinite}
-.mq-row.r{animation:mqR 50s linear infinite}
+.mq-row.r{animation:mqR 150s linear infinite}
 .mq:hover .mq-row{animation-play-state:paused}
 @keyframes mqL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes mqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
@@ -227,13 +227,6 @@ section{padding:100px 0;position:relative}
 .clip img,.clip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hoch{width:124px;aspect-ratio:9/16}
 .quer{width:220px;aspect-ratio:16/9}
-.g1{background:linear-gradient(150deg,#2e4a6b,#16263d)}
-.g2{background:linear-gradient(150deg,#3d6491,#1d3552)}
-.g3{background:linear-gradient(150deg,#16263d,#2e4a6b)}
-.g4{background:linear-gradient(150deg,#1d3552,#3d6491)}
-.g5{background:linear-gradient(150deg,#1b75bb,#124f80)}
-.g6{background:linear-gradient(150deg,#24405e,#101b2c)}
-.g7{background:linear-gradient(150deg,#2b8ad6,#155e97)}
 .clip::after{content:"";position:absolute;top:0;left:-80%;width:55%;height:100%;z-index:2;
   background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);
   transform:skew(-16deg);animation:sweep 6.5s ease-in-out infinite;pointer-events:none}
@@ -550,7 +543,7 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
   <div class="wrap sr-head reveal">
     <span class="sec-eyebrow orange">Showreel</span>
     <h2 class="sec-h">Ein kleiner Einblick in meine Videoarbeit</h2>
-    <p class="lede" style="margin:0 auto">Oben Hochkant-Clips für Social Media, unten Querformat für Events &amp; Feiern. <span style="opacity:.7">(Querformat-Reihe: Platzhalter, hier kommen bald echte Videos rein.)</span></p>
+    <p class="lede" style="margin:0 auto">Oben Hochkant-Clips für Social Media, unten Querformat für Events &amp; Feiern.</p>
   </div>
 
   <!-- Reihe 1: Hochkant 9:16, läuft nach links -->
@@ -585,18 +578,39 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
 
   <!-- Reihe 2: Querformat 16:9, läuft nach rechts -->
   <div class="mq">
-    <div class="mq-row r">
-      <div class="clip quer g5"><div class="cap"><b>Hochzeit am See</b><span>Feiern</span></div></div>
-      <div class="clip quer g3"><div class="cap"><b>Firmenjubiläum</b><span>Events</span></div></div>
-      <div class="clip quer g1"><div class="cap"><b>Geburtstagsfeier 50</b><span>Feiern</span></div></div>
-      <div class="clip quer g6"><div class="cap"><b>Aftermovie Stadtfest</b><span>Events</span></div></div>
-      <div class="clip quer g2"><div class="cap"><b>Gala-Abend Messe</b><span>Events</span></div></div>
-      <div class="clip quer g5"><div class="cap"><b>Hochzeit am See</b><span>Feiern</span></div></div>
-      <div class="clip quer g3"><div class="cap"><b>Firmenjubiläum</b><span>Events</span></div></div>
-      <div class="clip quer g1"><div class="cap"><b>Geburtstagsfeier 50</b><span>Feiern</span></div></div>
-      <div class="clip quer g6"><div class="cap"><b>Aftermovie Stadtfest</b><span>Events</span></div></div>
-      <div class="clip quer g2"><div class="cap"><b>Gala-Abend Messe</b><span>Events</span></div></div>
+    <div class="mq-row r" id="querRow">
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/arbeitgeber-power.mp4" type="video/mp4"><source src="assets/videos/arbeitgeber-power.webm" type="video/webm"></video><div class="cap"><b>Arbeitgeber Power</b><span>Business</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/dynamisch.mp4" type="video/mp4"><source src="assets/videos/dynamisch.webm" type="video/webm"></video><div class="cap"><b>Dynamisch</b><span>Showreel</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/euer-videocoach.mp4" type="video/mp4"><source src="assets/videos/euer-videocoach.webm" type="video/webm"></video><div class="cap"><b>Euer Videocoach</b><span>Video-Coaching</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/events.mp4" type="video/mp4"><source src="assets/videos/events.webm" type="video/webm"></video><div class="cap"><b>Events</b><span>Events</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/freudig-locker.mp4" type="video/mp4"><source src="assets/videos/freudig-locker.webm" type="video/webm"></video><div class="cap"><b>Freudig locker</b><span>Video-Coaching</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/interviews.mp4" type="video/mp4"><source src="assets/videos/interviews.webm" type="video/webm"></video><div class="cap"><b>Interviews</b><span>Video-Produktion</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/konferenzen.mp4" type="video/mp4"><source src="assets/videos/konferenzen.webm" type="video/webm"></video><div class="cap"><b>Konferenzen</b><span>Business</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/macht-spass.mp4" type="video/mp4"><source src="assets/videos/macht-spass.webm" type="video/webm"></video><div class="cap"><b>Macht Spaß</b><span>Showreel</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/motivation.mp4" type="video/mp4"><source src="assets/videos/motivation.webm" type="video/webm"></video><div class="cap"><b>Motivation</b><span>Video-Coaching</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/podcasts.mp4" type="video/mp4"><source src="assets/videos/podcasts.webm" type="video/webm"></video><div class="cap"><b>Podcasts</b><span>Video-Produktion</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/spass-bei-der-arbeit.mp4" type="video/mp4"><source src="assets/videos/spass-bei-der-arbeit.webm" type="video/webm"></video><div class="cap"><b>Spaß bei der Arbeit</b><span>Business</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/spass-ist-erwuenscht.mp4" type="video/mp4"><source src="assets/videos/spass-ist-erwuenscht.webm" type="video/webm"></video><div class="cap"><b>Spaß ist erwünscht</b><span>Video-Coaching</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/special-effects.mp4" type="video/mp4"><source src="assets/videos/special-effects.webm" type="video/webm"></video><div class="cap"><b>Special Effects</b><span>Video-Produktion</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/ueberzeugen.mp4" type="video/mp4"><source src="assets/videos/ueberzeugen.webm" type="video/webm"></video><div class="cap"><b>Überzeugen</b><span>Video-Coaching</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/video-coaching-quer.mp4" type="video/mp4"><source src="assets/videos/video-coaching-quer.webm" type="video/webm"></video><div class="cap"><b>Video-Coaching</b><span>Video-Coaching</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/arbeitgeber-power.mp4" type="video/mp4"><source src="assets/videos/arbeitgeber-power.webm" type="video/webm"></video><div class="cap"><b>Arbeitgeber Power</b><span>Business</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/dynamisch.mp4" type="video/mp4"><source src="assets/videos/dynamisch.webm" type="video/webm"></video><div class="cap"><b>Dynamisch</b><span>Showreel</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/euer-videocoach.mp4" type="video/mp4"><source src="assets/videos/euer-videocoach.webm" type="video/webm"></video><div class="cap"><b>Euer Videocoach</b><span>Video-Coaching</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/events.mp4" type="video/mp4"><source src="assets/videos/events.webm" type="video/webm"></video><div class="cap"><b>Events</b><span>Events</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/freudig-locker.mp4" type="video/mp4"><source src="assets/videos/freudig-locker.webm" type="video/webm"></video><div class="cap"><b>Freudig locker</b><span>Video-Coaching</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/interviews.mp4" type="video/mp4"><source src="assets/videos/interviews.webm" type="video/webm"></video><div class="cap"><b>Interviews</b><span>Video-Produktion</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/konferenzen.mp4" type="video/mp4"><source src="assets/videos/konferenzen.webm" type="video/webm"></video><div class="cap"><b>Konferenzen</b><span>Business</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/macht-spass.mp4" type="video/mp4"><source src="assets/videos/macht-spass.webm" type="video/webm"></video><div class="cap"><b>Macht Spaß</b><span>Showreel</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/motivation.mp4" type="video/mp4"><source src="assets/videos/motivation.webm" type="video/webm"></video><div class="cap"><b>Motivation</b><span>Video-Coaching</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/podcasts.mp4" type="video/mp4"><source src="assets/videos/podcasts.webm" type="video/webm"></video><div class="cap"><b>Podcasts</b><span>Video-Produktion</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/spass-bei-der-arbeit.mp4" type="video/mp4"><source src="assets/videos/spass-bei-der-arbeit.webm" type="video/webm"></video><div class="cap"><b>Spaß bei der Arbeit</b><span>Business</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/spass-ist-erwuenscht.mp4" type="video/mp4"><source src="assets/videos/spass-ist-erwuenscht.webm" type="video/webm"></video><div class="cap"><b>Spaß ist erwünscht</b><span>Video-Coaching</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/special-effects.mp4" type="video/mp4"><source src="assets/videos/special-effects.webm" type="video/webm"></video><div class="cap"><b>Special Effects</b><span>Video-Produktion</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/ueberzeugen.mp4" type="video/mp4"><source src="assets/videos/ueberzeugen.webm" type="video/webm"></video><div class="cap"><b>Überzeugen</b><span>Video-Coaching</span></div></div>
+      <div class="clip quer"><video muted loop playsinline preload="auto"><source src="assets/videos/video-coaching-quer.mp4" type="video/mp4"><source src="assets/videos/video-coaching-quer.webm" type="video/webm"></video><div class="cap"><b>Video-Coaching</b><span>Video-Coaching</span></div></div>
     </div>
+  </div>
   </div>
 </section>
 
