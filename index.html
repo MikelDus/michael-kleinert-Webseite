@@ -541,14 +541,15 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
       <p class="sub hero-anim" style="--i:2">Der kostenlose Schritt-für-Schritt-Guide, mit dem du deine Nervosität ablegst und mit dem Smartphone ein Video drehst, das deine Wunschkunden wirklich anspricht – ganz ohne Technik-Stress.</p>
       <div class="hero-form hero-anim" style="--i:3" id="lead">
         <div class="fc-title">Hol dir jetzt deinen Gratis-Guide</div>
-        <div class="fc-sub">Trag deine E-Mail ein – der Guide ist sofort in deinem Postfach.</div>
+        <div class="fc-sub">Vorname &amp; E-Mail eintragen – nach kurzer Bestätigung landet der Guide in deinem Postfach.</div>
         <form id="leadForm" novalidate>
+          <div class="field"><input type="text" id="vorname" placeholder="Dein Vorname" autocomplete="given-name" required></div>
           <div class="field"><input type="email" id="email" placeholder="Deine E-Mail-Adresse" autocomplete="email" required></div>
           <button type="submit" class="cta-btn" id="magnet1">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span>Ja, ich will selbstbewusst vor der Kamera stehen und neue Interessenten erreichen</span>
           </button>
-          <p class="privacy">Mit dem Klick erhältst du den Guide per E-Mail. Deine Adresse nutze ich ausschließlich für den Versand des Guides und die Kontaktaufnahme. Kein Spam. Mehr dazu im <a href="rechtliches.html#datenschutz">Datenschutz</a>.</p>
+          <p class="privacy">Nach dem Klick bekommst du eine Bestätigungs-E-Mail – erst nach deiner Bestätigung schicke ich dir den Guide. Deine Adresse nutze ich ausschließlich für den Versand des Guides und die Kontaktaufnahme. Kein Spam. Mehr dazu im <a href="rechtliches.html#datenschutz">Datenschutz</a>.</p>
         </form>
         <div class="dl-card">
           <div class="dl-cover"><img src="assets/vorschau-des-video-guides.png" alt="Vorschau des Video-Guides"></div>
@@ -924,8 +925,8 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
 <div class="modal-backdrop" id="modal">
   <div class="modal">
     <div class="cc"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-    <h3>Super, geschafft!</h3>
-    <p>Schau gleich in dein Postfach – dein Video-Guide ist unterwegs! (Bitte auch den Spam-Ordner checken.)</p>
+    <h3>Fast geschafft!</h3>
+    <p>Um die Anmeldung abzuschließen, klicke bitte auf den Link in der E-Mail, die wir dir gerade gesendet haben. (Bitte auch den Spam-Ordner checken.)</p>
     <button onclick="document.getElementById('modal').classList.remove('show')">Alles klar</button>
   </div>
 </div>
@@ -1083,9 +1084,14 @@ function focusLead(e){if(e)e.preventDefault();var em=document.getElementById('em
 
 /* Form */
 document.getElementById('leadForm').addEventListener('submit',function(e){
-  e.preventDefault();var em=document.getElementById('email');
-  if(!em.value||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value)){em.focus();em.style.borderColor='#e04b4b';return;}
-  document.getElementById('modal').classList.add('show');em.value='';em.style.borderColor='';
+  e.preventDefault();
+  var vn=document.getElementById('vorname');var em=document.getElementById('email');
+  var ok=true;
+  [vn,em].forEach(function(el){el.style.borderColor='';});
+  if(!vn.value.trim()){vn.style.borderColor='#e04b4b';ok=false;}
+  if(!em.value||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value)){em.style.borderColor='#e04b4b';ok=false;}
+  if(!ok){(vn.style.borderColor?vn:em).focus();return;}
+  document.getElementById('modal').classList.add('show');vn.value='';em.value='';
 });
 document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('show');});
 
