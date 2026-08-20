@@ -88,10 +88,24 @@ a{color:inherit}
 .nav .logo-badge{display:inline-flex;align-items:center;transition:transform .3s var(--ease)}
 .nav .logo-badge img{height:38px;width:auto}
 .nav .region{font-family:var(--display);font-weight:600;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;color:var(--blue);white-space:nowrap}
-.nav .nav-link{font-family:var(--display);font-weight:600;font-size:.92rem;color:var(--blue-ink);text-decoration:none}
-.nav .nav-link:hover{color:var(--blue)}
+.nav .nav-link{font-family:var(--display);font-weight:600;font-size:.92rem;color:var(--blue);text-decoration:none;background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:5px;padding:0}
+.nav .nav-link:hover{color:var(--blue-deep)}
 .nav .nav-cta{display:inline-flex}
-@media(max-width:760px){.nav .nav-link{display:none}}
+@media(max-width:760px){.nav .nav-link,.nav .nav-menu{display:none}}
+
+/* ===== Nav dropdown menu ===== */
+.nav-menu{position:relative}
+.nav-menu-btn svg{transition:transform .2s var(--ease)}
+.nav-menu-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.nav-menu-dropdown{
+  position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-8px);
+  background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-lg);
+  padding:10px;min-width:200px;display:flex;flex-direction:column;gap:2px;
+  opacity:0;pointer-events:none;transition:opacity .2s var(--ease),transform .2s var(--ease);z-index:60;
+}
+.nav-menu-dropdown.open{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-menu-dropdown a{font-family:var(--display);font-weight:600;font-size:.92rem;color:var(--ink);text-decoration:none;padding:10px 14px;border-radius:10px;transition:background .15s,color .15s}
+.nav-menu-dropdown a:hover{background:var(--sky);color:var(--blue)}
 .nav .nav-cta .cta-btn{padding:11px 20px;font-size:.9rem;border-radius:12px}
 @media(max-width:640px){.nav .region{display:none}}
 
@@ -406,6 +420,9 @@ footer p{font-size:.94rem;line-height:1.75;margin:0;color:#dbe8f3}
 footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underline}
 .foot-claim{font-family:var(--display);font-style:italic;font-weight:600;color:#fff;margin-top:8px}
 .foot-bottom{border-top:1px solid rgba(255,255,255,.18);margin-top:24px;padding-top:18px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.84rem;color:#b9d0e4}
+.foot-bottom-right{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.top-btn{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);color:#fff;text-decoration:none;padding:8px 15px;border-radius:100px;font-family:var(--display);font-weight:600;font-size:.84rem;transition:background .2s}
+.top-btn:hover{background:rgba(255,255,255,.24)}
 .foot-brand{display:flex;align-items:center;gap:14px;margin-bottom:0}
 .foot-brand img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid rgba(255,255,255,.5);flex:0 0 auto}
 .foot-brand .fb-name{font-family:var(--display);font-weight:700;color:#fff;font-size:1.05rem;line-height:1.2}
@@ -492,6 +509,19 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
 <nav class="nav" id="nav"><div class="wrap nav-inner">
   <a class="logo-badge" href="#top"><img src="assets/michael-kleinert-video-coaching-und-prod.png" alt="Michael Kleinert · Video-Coaching und Produktion"></a>
   <span class="region">Video-Coaching · Rheinland / NRW</span>
+  <span class="nav-menu">
+    <button class="nav-link nav-menu-btn" id="navMenuBtn" aria-haspopup="true" aria-expanded="false">
+      Seite <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="nav-menu-dropdown" id="navMenuDropdown">
+      <a href="#loesung">L&ouml;sung</a>
+      <a href="#leistungen">Das bekommst du</a>
+      <a href="#ueber-mich">&Uuml;ber mich</a>
+      <a href="#kundenstimmen">Kundenstimmen</a>
+      <a href="#faq">FAQ</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+  </span>
   <a class="nav-link" href="blog/index.html">Blog</a>
   <span class="nav-cta"><a href="#lead" class="cta-btn" onclick="focusLead(event)"><span>Gratis-Guide holen</span></a></span>
 </div></nav>
@@ -668,7 +698,7 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
 
 
 <!-- SOLUTION -->
-<section class="solution">
+<section class="solution" id="loesung">
   <div class="wrap">
     <div style="max-width:44em;margin-bottom:8px" class="reveal">
       <span class="sec-eyebrow">Die gute Nachricht</span>
@@ -692,7 +722,7 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
 </section>
 
 <!-- BENEFITS -->
-<section class="benefits" style="padding:96px 0">
+<section class="benefits" id="leistungen" style="padding:96px 0">
   <div class="wrap">
     <div class="reveal"><span class="sec-eyebrow">Das bekommst du</span>
     <h2 class="sec-h wow-h">Alles drin, damit dein erstes Video <span class="wow-word">richtig gelingt</span></h2>
@@ -708,7 +738,7 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
 </section>
 
 <!-- ABOUT -->
-<section class="about">
+<section class="about" id="ueber-mich">
   <div class="wrap about-grid">
     <div class="about-photo reveal">
       <img src="assets/michael-kleinert-lachend-mit-kamera.jpg" alt="Michael Kleinert, lachend mit Kamera">
@@ -728,7 +758,7 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
 
 
 <!-- TESTIMONIALS -->
-<section class="testi" style="background:var(--mist)">
+<section class="testi" id="kundenstimmen" style="background:var(--mist)">
   <div class="wrap">
     <div class="testi-head reveal">
       <div><span class="sec-eyebrow">Das sagen Kundinnen und Kunden</span><h2 class="sec-h">Echte Stimmen, echte Erlebnisse</h2></div>
@@ -756,7 +786,7 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
 </section>
 
 <!-- FAQ -->
-<section class="faq">
+<section class="faq" id="faq">
   <div class="wrap faq-grid">
     <div class="reveal"><span class="sec-eyebrow">Häufige Fragen</span><h2 class="sec-h">Gut zu wissen</h2><p class="lede">Die Fragen, die mir am häufigsten begegnen – kurz beantwortet.</p></div>
     <div class="faq-list reveal d1" id="faqList">
@@ -872,7 +902,13 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
         <a href="#" onclick="openCookieSettings(event)">Cookie-Einstellungen</a>
       </div>
     </div>
-    <div class="foot-bottom"><span>© <span id="year"></span> Michael Kleinert · Video-Coaching und Produktion</span><span>Düsseldorf · Rheinland/NRW</span></div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Michael Kleinert · Video-Coaching und Produktion</span>
+      <span class="foot-bottom-right">
+        <span>Düsseldorf · Rheinland/NRW</span>
+        <a href="#top" class="top-btn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6 15l6-6 6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Nach oben</a>
+      </span>
+    </div>
   </div>
 </footer>
 
@@ -925,6 +961,19 @@ window.addEventListener('load',function(){
 /* Nav solid on scroll */
 var nav=document.getElementById('nav');
 addEventListener('scroll',function(){nav.classList.toggle('solid',scrollY>40);});
+
+/* Nav anchor dropdown */
+(function(){
+  var btn=document.getElementById('navMenuBtn');
+  var dropdown=document.getElementById('navMenuDropdown');
+  if(!btn||!dropdown)return;
+  function closeMenu(){dropdown.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+  function toggleMenu(e){e.stopPropagation();var open=dropdown.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');}
+  btn.addEventListener('click',toggleMenu);
+  dropdown.addEventListener('click',function(e){if(e.target.tagName==='A')closeMenu();});
+  document.addEventListener('click',function(e){if(!dropdown.contains(e.target)&&e.target!==btn)closeMenu();});
+  addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+})();
 
 /* Cursor glow */
 if(!reduce && matchMedia('(pointer:fine)').matches){

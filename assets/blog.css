@@ -68,6 +68,9 @@ footer{background:#15466e;color:#dbe8f3;padding:34px 0 26px;font-size:.92rem}
 .foot-brand .fb-name{font-family:var(--display);font-weight:700;color:#fff;font-size:1.05rem;line-height:1.2}
 .foot-brand .fb-role{font-size:.84rem;color:#b9d0e4}
 .foot-bottom{border-top:1px solid rgba(255,255,255,.18);margin-top:24px;padding-top:18px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.84rem;color:#b9d0e4}
+.foot-bottom-right{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.top-btn{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);color:#fff;text-decoration:none;padding:8px 15px;border-radius:100px;font-family:var(--display);font-weight:600;font-size:.84rem;transition:background .2s}
+.top-btn:hover{background:rgba(255,255,255,.24)}
 
 /* ===== Blog: overview header ===== */
 .blog-hero{padding:64px 0 46px;background:linear-gradient(180deg,var(--mist),#fff)}
