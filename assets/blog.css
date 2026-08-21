@@ -18,7 +18,7 @@
   --display:'Sora',system-ui,sans-serif;
   --body:'Inter',system-ui,sans-serif;
   --wrap:1200px;
-  --wrap-article:760px;
+  --wrap-article:900px;
   --ease:cubic-bezier(.22,.61,.36,1);
   --shadow-xl:0 40px 90px -35px rgba(15,47,77,.45);
   --shadow-lg:0 24px 60px -28px rgba(15,47,77,.4);
