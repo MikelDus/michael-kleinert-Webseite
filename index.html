@@ -91,7 +91,24 @@ a{color:inherit}
 .nav .nav-link{font-family:var(--display);font-weight:600;font-size:.92rem;color:var(--blue);text-decoration:none;background:none;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:5px;padding:0}
 .nav .nav-link:hover{color:var(--blue-deep)}
 .nav .nav-cta{display:inline-flex}
-@media(max-width:760px){.nav .nav-link,.nav .nav-menu{display:none}}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;padding:6px;color:var(--blue-ink)}
+@media(max-width:760px){
+  .nav .nav-link,.nav .nav-menu{display:none}
+  .nav-burger{display:inline-flex}
+}
+
+/* ===== Nav mobile menu ===== */
+.nav-mobile-menu{
+  position:fixed;inset:0;z-index:70;background:#fff;
+  display:flex;flex-direction:column;gap:2px;padding:96px 28px 40px;overflow-y:auto;
+  opacity:0;pointer-events:none;transform:translateY(-10px);
+  transition:opacity .25s var(--ease),transform .25s var(--ease);
+}
+.nav-mobile-menu.open{opacity:1;pointer-events:auto;transform:translateY(0)}
+.nav-mobile-menu a{font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--blue-ink);text-decoration:none;padding:17px 4px;border-bottom:1px solid var(--line)}
+.nav-mobile-menu a.cta-btn{border-bottom:none;text-align:center;justify-content:center;color:#fff}
+.nav-mobile-close{position:absolute;top:18px;right:20px;background:none;border:none;cursor:pointer;padding:8px;color:var(--blue-ink)}
+body.nav-open{overflow:hidden}
 
 /* ===== Nav dropdown menu ===== */
 .nav-menu{position:relative}
@@ -524,7 +541,24 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
   </span>
   <a class="nav-link" href="blog/index.html">Blog</a>
   <span class="nav-cta"><a href="#lead" class="cta-btn" onclick="focusLead(event)"><span>Gratis-Guide holen</span></a></span>
+  <button class="nav-burger" id="navBurgerBtn" aria-haspopup="true" aria-expanded="false" aria-label="Men&uuml; &ouml;ffnen">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+  </button>
 </div></nav>
+
+<div class="nav-mobile-menu" id="navMobileMenu">
+  <button class="nav-mobile-close" id="navMobileClose" aria-label="Men&uuml; schlie&szlig;en">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+  </button>
+  <a href="#loesung">L&ouml;sung</a>
+  <a href="#leistungen">Das bekommst du</a>
+  <a href="#ueber-mich">&Uuml;ber mich</a>
+  <a href="#kundenstimmen">Kundenstimmen</a>
+  <a href="#faq">FAQ</a>
+  <a href="#kontakt">Kontakt</a>
+  <a href="blog/index.html">Blog</a>
+  <a href="#lead" class="cta-btn" onclick="focusLead(event)" style="margin-top:14px"><span>Gratis-Guide holen</span></a>
+</div>
 
 <!-- MARQUEE (unter dem Menü) -->
 <div class="marquee"><div class="marquee-track">
@@ -973,6 +1007,20 @@ addEventListener('scroll',function(){nav.classList.toggle('solid',scrollY>40);})
   btn.addEventListener('click',toggleMenu);
   dropdown.addEventListener('click',function(e){if(e.target.tagName==='A')closeMenu();});
   document.addEventListener('click',function(e){if(!dropdown.contains(e.target)&&e.target!==btn)closeMenu();});
+  addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+})();
+
+/* Nav mobile menu */
+(function(){
+  var burger=document.getElementById('navBurgerBtn');
+  var closeBtn=document.getElementById('navMobileClose');
+  var menu=document.getElementById('navMobileMenu');
+  if(!burger||!menu)return;
+  function closeMenu(){menu.classList.remove('open');burger.setAttribute('aria-expanded','false');document.body.classList.remove('nav-open');}
+  function openMenu(){menu.classList.add('open');burger.setAttribute('aria-expanded','true');document.body.classList.add('nav-open');}
+  burger.addEventListener('click',openMenu);
+  closeBtn.addEventListener('click',closeMenu);
+  menu.addEventListener('click',function(e){if(e.target.tagName==='A')closeMenu();});
   addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
 })();
 
