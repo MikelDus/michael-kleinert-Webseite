@@ -1,0 +1,29 @@
+name: Deploy to netcup
+
+on:
+  push:
+    branches: [claude/github-repro-erstellen-gepirc]
+  workflow_dispatch:
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.NETCUP_FTP_HOST }}
+          username: ${{ secrets.NETCUP_FTP_USER }}
+          password: ${{ secrets.NETCUP_FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./
+          server-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            README.md
+            docs/**
