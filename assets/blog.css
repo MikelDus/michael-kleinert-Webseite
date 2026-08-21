@@ -116,6 +116,8 @@ footer{background:#15466e;color:#dbe8f3;padding:34px 0 26px;font-size:.92rem}
 .prose strong{color:var(--blue-ink)}
 .prose a{color:var(--blue);text-decoration:underline}
 .pull{background:var(--mist);border-left:4px solid var(--orange);border-radius:0 14px 14px 0;padding:18px 22px;margin:24px 0;font-family:var(--display);font-weight:600;font-size:1.08rem;color:var(--blue-ink)}
+.src-note{display:inline-block;font-family:var(--display);font-weight:700;font-size:.72rem;letter-spacing:.03em;color:var(--blue);text-decoration:none;background:var(--sky);border-radius:100px;padding:2px 9px;margin-left:4px;vertical-align:middle}
+.src-note:hover{background:var(--sky-2);text-decoration:none}
 
 .cta-box{margin:44px 0;background:linear-gradient(150deg,var(--blue),#124f80);border-radius:24px;padding:36px 34px;color:#fff;text-align:center}
 .cta-box h3{color:#fff;font-size:1.5rem;margin-bottom:10px}
