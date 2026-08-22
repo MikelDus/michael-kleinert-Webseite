@@ -169,6 +169,12 @@ body.nav-open{overflow:hidden}
   transition:border .16s,box-shadow .16s;
 }
 .field input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(27,117,187,.13)}
+.cr-captcha-field{margin-bottom:11px}
+.cr-captcha-field .g-recaptcha>div{margin:0 auto}
+.cr-captcha-field.cr-error{box-shadow:0 0 0 3px rgba(224,75,75,.35);border-radius:4px}
+@media(max-width:480px){.cr-captcha-field{transform:scale(.9);transform-origin:0 0}}
+@media(max-width:400px){.cr-captcha-field{transform:scale(.8);transform-origin:0 0}}
+@media(max-width:340px){.cr-captcha-field{transform:scale(.7);transform-origin:0 0}}
 .hero-form .cta-btn{width:100%;justify-content:center;font-size:1rem;padding:18px 20px}
 .hero-form .privacy{font-size:.77rem;color:var(--muted);margin-top:12px;line-height:1.5}
 .hero-form .privacy a{color:var(--blue);text-decoration:underline}
@@ -515,6 +521,7 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
   .cursor-glow,.aurora span{display:none}
 }
 </style>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}.hero-anim{opacity:1!important;transform:none!important}</style></noscript>
@@ -575,16 +582,22 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
       <p class="sub hero-anim" style="--i:2">Der kostenlose Schritt-für-Schritt-Guide, mit dem du deine Nervosität ablegst und mit dem Smartphone ein Video drehst, das deine Wunschkunden wirklich anspricht – ganz ohne Technik-Stress.</p>
       <div class="hero-form hero-anim" style="--i:3" id="lead">
         <div class="fc-title">Hol dir jetzt deinen Gratis-Guide</div>
-        <div class="fc-sub">Vorname &amp; E-Mail eintragen – nach kurzer Bestätigung landet der Guide in deinem Postfach.</div>
-        <form id="leadForm" novalidate>
-          <div class="field"><input type="text" id="vorname" placeholder="Dein Vorname" autocomplete="given-name" required></div>
-          <div class="field"><input type="email" id="email" placeholder="Deine E-Mail-Adresse" autocomplete="email" required></div>
+        <div class="fc-sub">Vorname, Nachname &amp; E-Mail eintragen – nach kurzer Bestätigung landet der Guide in deinem Postfach.</div>
+        <form id="leadForm" novalidate action="https://seu2.cleverreach.com/f/244993-242777/wcs/" method="post" target="cr_confirm">
+          <div class="field"><input type="text" id="vorname" name="1013922" placeholder="Dein Vorname" autocomplete="given-name" required></div>
+          <div class="field"><input type="text" id="nachname" name="1013923" placeholder="Dein Nachname" autocomplete="family-name" required></div>
+          <div class="field"><input type="email" id="email" name="email" placeholder="Deine E-Mail-Adresse" autocomplete="email" required></div>
+          <input type="hidden" name="cr_subunsubscribe" value="true">
+          <div class="field cr-captcha-field">
+            <div class="g-recaptcha" data-sitekey="6Lfhcd0SAAAAAOBEHmAVEHJeRnrH8T7wPvvNzEPD"></div>
+          </div>
           <button type="submit" class="cta-btn" id="magnet1">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span>Ja, ich will selbstbewusst vor der Kamera stehen und neue Interessenten erreichen</span>
           </button>
-          <p class="privacy">Nach dem Klick bekommst du eine Bestätigungs-E-Mail – erst nach deiner Bestätigung schicke ich dir den Guide. Deine Adresse nutze ich ausschließlich für den Versand des Guides und die Kontaktaufnahme. Kein Spam. Mehr dazu im <a href="rechtliches.html#datenschutz">Datenschutz</a>.</p>
+          <p class="privacy">Nach dem Klick bekommst du eine Bestätigungs-E-Mail – erst nach deiner Bestätigung schicke ich dir den Guide. Der Versand erfolgt über den Anbieter CleverReach, zum Schutz vor Spam-Anmeldungen kommt Google reCAPTCHA zum Einsatz. Deine Adresse nutze ich ausschließlich für den Versand des Guides und die Kontaktaufnahme. Kein Spam. Mehr dazu im <a href="rechtliches.html#datenschutz">Datenschutz</a>.</p>
         </form>
+        <iframe name="cr_confirm" style="display:none" title="CleverReach Anmeldebestätigung"></iframe>
         <div class="dl-card">
           <div class="dl-cover"><img src="assets/vorschau-des-video-guides.png" alt="Vorschau des Video-Guides"></div>
           <div class="dl-text">
@@ -1132,14 +1145,30 @@ function focusLead(e){if(e)e.preventDefault();var em=document.getElementById('em
 
 /* Form */
 document.getElementById('leadForm').addEventListener('submit',function(e){
-  e.preventDefault();
-  var vn=document.getElementById('vorname');var em=document.getElementById('email');
+  var vn=document.getElementById('vorname');var nn=document.getElementById('nachname');var em=document.getElementById('email');
+  var captchaField=document.querySelector('.cr-captcha-field');
   var ok=true;
-  [vn,em].forEach(function(el){el.style.borderColor='';});
+  [vn,nn,em].forEach(function(el){el.style.borderColor='';});
+  captchaField.classList.remove('cr-error');
   if(!vn.value.trim()){vn.style.borderColor='#e04b4b';ok=false;}
+  if(!nn.value.trim()){nn.style.borderColor='#e04b4b';ok=false;}
   if(!em.value||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value)){em.style.borderColor='#e04b4b';ok=false;}
-  if(!ok){(vn.style.borderColor?vn:em).focus();return;}
-  document.getElementById('modal').classList.add('show');vn.value='';em.value='';
+  var captchaOk=(typeof grecaptcha==='undefined')||grecaptcha.getResponse().length>0;
+  if(!captchaOk){captchaField.classList.add('cr-error');ok=false;}
+  if(!ok){
+    e.preventDefault();
+    if(vn.style.borderColor)vn.focus();
+    else if(nn.style.borderColor)nn.focus();
+    else if(em.style.borderColor)em.focus();
+    else captchaField.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  /* Gültig: Formular wird nativ im Hintergrund (verstecktes iFrame) an CleverReach gesendet */
+  setTimeout(function(){
+    document.getElementById('modal').classList.add('show');
+    vn.value='';nn.value='';em.value='';
+    if(typeof grecaptcha!=='undefined')grecaptcha.reset();
+  },50);
 });
 document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('show');});
 
