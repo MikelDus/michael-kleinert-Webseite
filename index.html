@@ -265,6 +265,23 @@ section{padding:100px 0;position:relative}
 .sec-h{font-size:clamp(1.9rem,3.6vw,2.8rem);margin-bottom:18px;letter-spacing:-.03em}
 .lede{font-size:1.14rem;color:var(--muted);max-width:40em}
 
+/* ===== Approach ("So arbeite ich mit dir") ===== */
+.approach-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:42px}
+.approach-card{
+  position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;
+  padding:28px 26px 26px;box-shadow:var(--shadow-md);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+}
+.approach-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.approach-num{
+  display:grid;place-items:center;width:40px;height:40px;border-radius:12px;
+  background:linear-gradient(135deg,var(--blue),var(--blue-2));color:#fff;
+  font-family:var(--display);font-weight:700;margin-bottom:16px;
+  box-shadow:0 8px 18px -8px rgba(27,117,187,.7);
+}
+.approach-card h3{font-size:1.1rem;margin-bottom:8px;color:var(--blue-ink)}
+.approach-card p{font-size:.97rem;color:var(--muted);margin:0;line-height:1.65}
+
 /* reveal */
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .reveal.in{opacity:1;transform:none}
@@ -521,6 +538,7 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
 @media(max-width:960px){
   .hero-grid,.problem-grid,.solution-grid,.about-grid,.faq-grid,.intro-grid{grid-template-columns:1fr;gap:42px}
   .ben-grid{grid-template-columns:1fr}
+  .approach-grid{grid-template-columns:1fr}
   .hero-visual{order:-1}
   .hero-photo{width:min(74%,340px)}
   .about-photo{max-width:440px;margin:0 auto}
@@ -603,8 +621,61 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
   <span><span class="dot"></span>Authentisch statt perfekt<span class="dot"></span>Sichtbar werden im KI-Zeitalter<span class="dot"></span>Nur dein Smartphone<span class="dot"></span>Kein Studio nötig<span class="dot"></span>In 30 Minuten fertig<span class="dot"></span></span>
 </div></div>
 
+<!-- APPROACH ("So arbeite ich mit dir") -->
+<section class="approach" id="top">
+  <div class="wrap">
+    <div class="reveal" style="max-width:44em">
+      <span class="sec-eyebrow orange">So arbeite ich mit dir</span>
+      <h2 class="sec-h">Nicht nur gefilmt. Begleitet.</h2>
+      <p class="lede">Ein Videograf macht Filme. Ich nehme dich an die Hand und f&uuml;hre dich durch dein ganzes Videoprojekt &mdash; von der ersten Idee bis zum fertigen Ergebnis.</p>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-card reveal d1">
+        <span class="approach-num">1</span>
+        <h3>Mehr als ein Videograf</h3>
+        <p>Ein Videograf macht nur Filme. Ich f&uuml;hre meine Kunden durch ihr ganzes Videoprojekt, nehme sie an die Hand &ndash; und wir legen gemeinsam los.</p>
+      </div>
+      <div class="approach-card reveal d2">
+        <span class="approach-num">2</span>
+        <h3>Wie wir ins Gespr&auml;ch kommen</h3>
+        <p>Diese Frage kenne ich sehr gut! Wir f&uuml;hren zuerst ein Gespr&auml;ch: Ich lasse mir kleine Geschichten und Erfolgsbeispiele erz&auml;hlen. So n&auml;hern wir uns ganz schnell an &ndash; egal, ob es um gl&uuml;ckliche Kunden geht oder um ein starkes Team, das viele Erfolgsgeschichten kennt.</p>
+      </div>
+      <div class="approach-card reveal d3">
+        <span class="approach-num">3</span>
+        <h3>Was du mitbringen musst</h3>
+        <p>Du brauchst nur den Wunsch! Den Rest kl&auml;ren wir gemeinsam im Gespr&auml;ch &ndash; nicht nur, wor&uuml;ber wir berichten wollen, sondern auch, an welchen Stellen im Haus wir drehen k&ouml;nnen und vor allem, wer Lust hat, textlich etwas beizutragen. Eine passende Location finden wir immer. Hauptsache, sie wirkt professionell.</p>
+      </div>
+      <div class="approach-card reveal d4">
+        <span class="approach-num">4</span>
+        <h3>Der Unterschied: Videograf vs. Video-Coach</h3>
+        <p>Ein guter Videograf sorgt f&uuml;r das richtige Bild, den richtigen Ton und die richtige Beleuchtung. Der Video-Coach &uuml;bernimmt die volle Verantwortung, rollt das Projekt von Anfang an auf und sorgt daf&uuml;r, dass am Ende genau das entsteht, was ihr euch alle gew&uuml;nscht habt.</p>
+      </div>
+      <div class="approach-card reveal d1">
+        <span class="approach-num">5</span>
+        <h3>Von skeptisch zu selbstbewusst</h3>
+        <p>Die Menschen vor der Kamera sind anfangs oft noch skeptisch &ndash; bekommen dann aber immer mehr Spa&szlig; an der Sache. Mit Coaching-Elementen, kleinen Interventionen und vor allem viel gemeinsamem Lachen kommen wir dem authentischen Auftritt auf die Spur.</p>
+      </div>
+      <div class="approach-card reveal d2">
+        <span class="approach-num">6</span>
+        <h3>Menschlich statt perfekt</h3>
+        <p>Menschen &ouml;ffnen sich erst, wenn es menschlich zugeht. Perfektion ist reines Gift &ndash; manchmal stellt sie sich automatisch ein, aber die Hauptsache ist: Es macht Spa&szlig;, und dieser Spa&szlig; &uuml;bertr&auml;gt sich auf die Zuschauer. Damit das gelingt, nehme ich euch an die Hand.</p>
+      </div>
+      <div class="approach-card reveal d3">
+        <span class="approach-num">7</span>
+        <h3>Auch an schlechten Tagen holen wir das Beste raus</h3>
+        <p>Egal ob du gerade gut drauf bist oder nicht &ndash; wir holen das Beste aus dir heraus, indem wir immer auf die helle Seite schauen. Was ist heute gut? Was ist toll an eurem Angebot? Habt ihr schon Kunden gl&uuml;cklich gemacht? Irgendetwas finden wir immer.</p>
+      </div>
+      <div class="approach-card reveal d4">
+        <span class="approach-num">8</span>
+        <h3>Kompetenz zeigen, ohne zu &uuml;bertreiben</h3>
+        <p>Kompetenz zu zeigen muss subtil geschehen. Das hei&szlig;t: Wir zeigen, wie gut das Team funktioniert, wir zeigen saubere Arbeitspl&auml;tze &ndash; und vor allem zeigen wir Mitarbeiter mit eigenen Botschaften und einen Chef, der stolz auf sein Team ist.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- INTRO HERO (Hauptbanner) -->
-<header class="intro-hero" id="top">
+<header class="intro-hero">
   <div class="wrap intro-grid">
     <div class="intro-copy">
       <span class="intro-kicker hero-anim" style="--i:0">Der Videocoach Michael Kleinert</span>
