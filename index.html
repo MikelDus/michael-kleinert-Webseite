@@ -128,7 +128,7 @@ body.nav-open{overflow:hidden}
 
 /* ===== HERO ===== */
 .hero{position:relative;display:flex;align-items:center;padding:40px 0 50px;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center;width:100%}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;width:100%}
 .eyebrow{
   display:inline-flex;align-items:center;gap:.6em;
   background:rgba(27,117,187,.09);border:1px solid rgba(27,117,187,.2);
@@ -194,10 +194,11 @@ body.nav-open{overflow:hidden}
 
 /* hero visual */
 .hero-visual{position:relative;display:flex;justify-content:center}
+.hero-photo-wrap{position:relative;width:260px;max-width:100%;margin-top:8px}
 .hero-photo{
-  position:relative;width:min(100%,320px);border-radius:24px;overflow:hidden;
+  position:relative;width:100%;border-radius:20px;overflow:hidden;
   box-shadow:var(--shadow-xl);will-change:transform;
-  border:6px solid #fff;
+  border:5px solid #fff;
 }
 .hero-photo img{width:100%;display:block;aspect-ratio:81/160;object-fit:cover;transform:scale(1.06);will-change:transform}
 .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(15,47,77,.28))}
@@ -539,8 +540,6 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
   .hero-grid,.problem-grid,.solution-grid,.about-grid,.faq-grid,.intro-grid{grid-template-columns:1fr;gap:42px}
   .ben-grid{grid-template-columns:1fr}
   .approach-grid{grid-template-columns:1fr}
-  .hero-visual{order:-1}
-  .hero-photo{width:min(74%,340px)}
   .about-photo{max-width:440px;margin:0 auto}
   .foot-grid{grid-template-columns:1fr;gap:28px}
   .trio{grid-template-columns:1fr}
@@ -828,7 +827,17 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
       <span class="eyebrow hero-anim" style="--i:0"><span class="pulse"></span>Im KI-Zeitalter gewinnt, wer sich echt zeigt</span>
       <h1 class="hero-anim" style="--i:1">In 30 Minuten dein erstes authentisches Video – <span class="hl">mit dem du Menschen wirklich erreichst</span></h1>
       <p class="sub hero-anim" style="--i:2">Der kostenlose Schritt-für-Schritt-Guide, mit dem du deine Nervosität ablegst und mit dem Smartphone ein Video drehst, das deine Wunschkunden wirklich anspricht – ganz ohne Technik-Stress.</p>
-      <div class="hero-form hero-anim" style="--i:3" id="lead">
+      <div class="hero-photo-wrap hero-anim" style="--i:3">
+        <div class="hero-photo" id="heroPhoto" onclick="openVideo()">
+          <img src="assets/michael-kleinert-beim-filmen-mit-dem-sma.jpg" alt="Michael Kleinert beim Filmen mit dem Smartphone" id="heroImg">
+          <span class="play-badge"><span class="pi"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>Video ansehen</span>
+        </div>
+        <span class="float-chip chip-time"><span class="ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Fertig in 30 Min.</span>
+        <span class="float-chip chip-auth"><span class="ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>100 % echt, 0 % Technik-Stress</span>
+      </div>
+    </div>
+    <div class="hero-visual hero-anim" style="--i:2">
+      <div class="hero-form" id="lead">
         <div class="fc-title">Hol dir jetzt deinen Gratis-Guide</div>
         <div class="fc-sub">Vorname &amp; E-Mail eintragen – nach kurzer Bestätigung landet der Guide in deinem Postfach.</div>
         <form id="leadForm" novalidate action="https://seu2.cleverreach.com/f/244993-431186/wcs/" method="post" target="cr_confirm">
@@ -854,14 +863,6 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
           </div>
         </div>
       </div>
-    </div>
-    <div class="hero-visual hero-anim" style="--i:2">
-      <div class="hero-photo" id="heroPhoto" onclick="openVideo()">
-        <img src="assets/michael-kleinert-beim-filmen-mit-dem-sma.jpg" alt="Michael Kleinert beim Filmen mit dem Smartphone" id="heroImg">
-        <span class="play-badge"><span class="pi"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>Video ansehen</span>
-      </div>
-      <span class="float-chip chip-time"><span class="ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Fertig in 30 Min.</span>
-      <span class="float-chip chip-auth"><span class="ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>100 % echt, 0 % Technik-Stress</span>
     </div>
   </div>
 </header>
@@ -1168,11 +1169,20 @@ if(!reduce && matchMedia('(pointer:fine)').matches){
 
 /* Parallax: hero image + floating chips (cine photo has its own gentle float) */
 var heroImg=document.getElementById('heroImg');
+var heroPhoto=document.querySelector('.hero-photo');
+var heroSection=document.querySelector('header.hero');
 var chips=document.querySelectorAll('.float-chip');
 function parallax(){
-  var y=scrollY;
-  if(heroImg)heroImg.style.transform='scale(1.06) translateY('+(y*0.04)+'px)';
-  chips.forEach(function(c,i){c.style.transform='translateY('+(y*(i?0.05:-0.05))+'px)';});
+  if(heroImg && heroPhoto){
+    var r=heroPhoto.getBoundingClientRect();
+    var offset=(innerHeight/2-(r.top+r.height/2))*0.08;
+    heroImg.style.transform='scale(1.06) translateY('+offset+'px)';
+  }
+  if(heroSection && chips.length){
+    var r2=heroSection.getBoundingClientRect();
+    var base=innerHeight/2-(r2.top+r2.height/2);
+    chips.forEach(function(c,i){c.style.transform='translateY('+(base*(i?0.05:-0.05))+'px)';});
+  }
 }
 if(!reduce){addEventListener('scroll',function(){requestAnimationFrame(parallax);});parallax();}
 
