@@ -392,10 +392,12 @@ section{padding:100px 0;position:relative}
 
 /* ===== Proof trio ===== */
 .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
-.trio figure{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);aspect-ratio:7/9}
+.trio figure{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md);aspect-ratio:7/9;cursor:pointer}
 .trio img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .7s var(--ease)}
 .trio figure:hover img{transform:scale(1.06)}
 .trio figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px;color:#fff;font-family:var(--display);font-weight:600;font-size:.95rem;background:linear-gradient(transparent,rgba(15,47,77,.85))}
+.trio-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;color:var(--cta);box-shadow:var(--shadow-lg);transition:transform .25s var(--ease),background .25s var(--ease)}
+.trio figure:hover .trio-play{transform:translate(-50%,-50%) scale(1.08);background:#fff}
 
 /* ===== About ===== */
 .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
@@ -500,7 +502,7 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
 .lightbox{position:fixed;inset:0;z-index:200;background:rgba(7,20,33,.88);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px}
 .lightbox.show{display:flex;animation:fade .3s}
 @keyframes fade{from{opacity:0}to{opacity:1}}
-.lb-inner{position:relative;width:min(100%,380px);aspect-ratio:9/16;border-radius:24px;overflow:hidden;box-shadow:0 40px 90px -20px rgba(0,0,0,.7);animation:pop .35s var(--ease)}
+.lb-inner{position:relative;width:min(92vw,900px);aspect-ratio:16/9;border-radius:24px;overflow:hidden;box-shadow:0 40px 90px -20px rgba(0,0,0,.7);animation:pop .35s var(--ease)}
 @keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
 .lb-inner iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .lb-close{position:absolute;top:-6px;right:-6px;transform:translate(50%,-50%);width:44px;height:44px;border-radius:50%;background:#fff;border:none;cursor:pointer;display:grid;place-items:center;color:var(--ink);box-shadow:var(--shadow-lg);z-index:2}
@@ -530,7 +532,7 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
 .cookie-btn.ghost:hover{background:var(--mist)}
 @media(max-width:480px){.cookie-banner{padding:18px;left:10px;right:10px;bottom:10px}}
 
-/* ===== Video consent (inside lightbox, shown until YouTube is approved) ===== */
+/* ===== Video consent (inside lightbox, shown until Vimeo is approved) ===== */
 .video-consent{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:32px;text-align:center;background:linear-gradient(160deg,#0f2f4d,#0b2136);color:#fff}
 .video-consent p{color:#dcebf7;font-size:.94rem;max-width:30em;margin:0}
 .video-consent a{color:#ffb14d;text-decoration:underline}
@@ -795,9 +797,21 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
       <p class="lede" style="margin:0 auto 8px">Schnapp dir deine Kamera und zeig, wer du wirklich bist. Denn Menschen folgen keinem perfekten Video – sie folgen einem echten Menschen.</p>
     </div>
     <div class="trio">
-      <figure class="reveal"><img src="assets/michael-beim-dreh.jpg" alt="Michael beim Dreh"><figcaption>Beim Coaching vor Ort</figcaption></figure>
-      <figure class="reveal d1"><img src="assets/michael-im-studio.jpg" alt="Michael im Studio"><figcaption>Im Studio</figcaption></figure>
-      <figure class="reveal d2"><img src="assets/michael-in-aktion.jpg" alt="Michael in Aktion"><figcaption>Ganz nah dran</figcaption></figure>
+      <figure class="reveal" onclick="openVideo('1231969451','Beim Coaching vor Ort')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openVideo('1231969451','Beim Coaching vor Ort')">
+        <img src="assets/michael-beim-dreh.jpg" alt="Beim Coaching vor Ort – Video ansehen">
+        <span class="trio-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        <figcaption>Beim Coaching vor Ort</figcaption>
+      </figure>
+      <figure class="reveal d1" onclick="openVideo('1231969452','Im Studio')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openVideo('1231969452','Im Studio')">
+        <img src="assets/michael-im-studio.jpg" alt="Im Studio – Video ansehen">
+        <span class="trio-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        <figcaption>Im Studio</figcaption>
+      </figure>
+      <figure class="reveal d2" onclick="openVideo('1231969454','Ganz nah dran')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')openVideo('1231969454','Ganz nah dran')">
+        <img src="assets/michael-in-aktion.jpg" alt="Ganz nah dran – Video ansehen">
+        <span class="trio-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+        <figcaption>Ganz nah dran</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -1098,7 +1112,7 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
   <div class="cookie-inner">
     <div class="cookie-text">
       <b>Cookies &amp; externe Inhalte</b>
-      <p>Diese Seite verwendet nur technisch notwendige Funktionen. Für das eingebettete YouTube-Video werden – erst wenn du es aktiv abspielst bzw. hier zustimmst – Daten an Google übertragen. Mehr dazu in der <a href="rechtliches.html#datenschutz">Datenschutzerklärung</a>.</p>
+      <p>Diese Seite verwendet nur technisch notwendige Funktionen. Für die eingebetteten Vimeo-Videos werden – erst wenn du sie aktiv abspielst bzw. hier zustimmst – Daten an Vimeo übertragen. Mehr dazu in der <a href="rechtliches.html#datenschutz">Datenschutzerklärung</a>.</p>
     </div>
     <div class="cookie-actions">
       <button class="cookie-btn ghost" id="cookieReject" type="button">Nur notwendige</button>
@@ -1246,17 +1260,19 @@ function openCookieSettings(e){if(e)e.preventDefault();cookieBanner.classList.ad
 document.getElementById('cookieAccept').addEventListener('click',function(){setConsent('accepted');cookieBanner.classList.remove('show');});
 document.getElementById('cookieReject').addEventListener('click',function(){setConsent('rejected');cookieBanner.classList.remove('show');});
 
-/* Video lightbox (gated behind cookie/YouTube consent) */
+/* Video lightbox (gated behind cookie/Vimeo consent) */
 var videoConsentSession=false;
-var YT_IFRAME='<iframe src="https://www.youtube-nocookie.com/embed/ec-qw7Z_cTQ?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="Michael Kleinert – Video" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>';
-function openVideo(){
+function vimeoIframe(id,title){
+  return '<iframe src="https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0" title="'+title+'" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+}
+function openVideo(id,title){
   var lb=document.getElementById('lightbox');
   var slot=document.getElementById('lbSlot');
   if(hasMediaConsent()||videoConsentSession){
-    slot.innerHTML=YT_IFRAME;
+    slot.innerHTML=vimeoIframe(id,title);
   }else{
-    slot.innerHTML='<div class="video-consent"><p>Zum Abspielen wird eine Verbindung zu YouTube (Google Ireland Limited) hergestellt. Dabei können Daten an Google übertragen werden. Mehr dazu in der <a href="rechtliches.html#datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p><button class="cta-btn" id="loadVideoBtn" type="button"><span>Video laden &amp; abspielen</span></button></div>';
-    document.getElementById('loadVideoBtn').addEventListener('click',function(){videoConsentSession=true;slot.innerHTML=YT_IFRAME;});
+    slot.innerHTML='<div class="video-consent"><p>Zum Abspielen wird eine Verbindung zu Vimeo (Vimeo.com Inc., 555 West 18th Street, New York, NY 10011, USA) hergestellt. Dabei können Daten an Vimeo übertragen werden. Mehr dazu in der <a href="rechtliches.html#datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p><button class="cta-btn" id="loadVideoBtn" type="button"><span>Video laden &amp; abspielen</span></button></div>';
+    document.getElementById('loadVideoBtn').addEventListener('click',function(){videoConsentSession=true;slot.innerHTML=vimeoIframe(id,title);});
   }
   lb.classList.add('show');document.body.style.overflow='hidden';
 }
