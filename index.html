@@ -446,6 +446,65 @@ section{padding:100px 0;position:relative}
 @keyframes faqFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 .faq-more{margin-top:28px}
 
+/* ===== FÜR WEN GEEIGNET (Glaskacheln) ===== */
+.fit{padding:104px 0;position:relative}
+.fit-head{text-align:center;max-width:44em;margin:0 auto 48px}
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:stretch}
+.fit-card{
+  position:relative;overflow:hidden;
+  background:rgba(255,255,255,.52);
+  backdrop-filter:blur(22px) saturate(1.5);-webkit-backdrop-filter:blur(22px) saturate(1.5);
+  border:1px solid rgba(255,255,255,.7);
+  border-radius:28px;
+  padding:38px 36px 34px;
+  box-shadow:var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,.8);
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease);
+  display:flex;flex-direction:column;
+}
+.fit-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-xl), inset 0 1px 0 rgba(255,255,255,.8)}
+.fit-card::before{
+  content:"";position:absolute;width:240px;height:240px;border-radius:50%;
+  top:-90px;pointer-events:none;filter:blur(10px);
+}
+.fit-card.yes::before{left:-90px;background:radial-gradient(circle,rgba(27,117,187,.28),transparent 70%)}
+.fit-card.no::before{right:-90px;background:radial-gradient(circle,rgba(90,107,120,.22),transparent 70%)}
+.fit-badge{
+  display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+  font-family:var(--display);font-weight:700;font-size:.76rem;letter-spacing:.07em;text-transform:uppercase;
+  padding:7px 14px;border-radius:100px;margin-bottom:18px;position:relative;z-index:1;
+}
+.fit-card.yes .fit-badge{background:rgba(27,117,187,.12);color:var(--blue-deep)}
+.fit-card.no .fit-badge{background:rgba(90,107,120,.14);color:var(--muted)}
+.fit-card h3{position:relative;z-index:1;font-family:var(--display);font-weight:800;font-size:1.32rem;color:var(--blue-ink);letter-spacing:-.02em;margin-bottom:8px}
+.fit-lede{position:relative;z-index:1;font-style:italic;color:var(--muted);font-size:1.02rem;margin-bottom:20px}
+.fit-points{position:relative;z-index:1;list-style:none;margin:0 0 6px;padding:0;display:flex;flex-direction:column;gap:11px}
+.fit-points li{display:flex;align-items:flex-start;gap:11px;font-size:.98rem;color:var(--ink);line-height:1.45}
+.fit-points .ic{flex:0 0 auto;width:21px;height:21px;border-radius:50%;display:grid;place-items:center;margin-top:1px}
+.fit-card.yes .fit-points .ic{background:var(--blue);color:#fff}
+.fit-card.no .fit-points .ic{background:#dfe4e8;color:var(--muted)}
+.fit-more{position:relative;z-index:1;margin-top:20px;border-top:1px solid rgba(15,47,77,.1);padding-top:4px}
+.fit-more summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;gap:9px;
+  padding:14px 4px;font-family:var(--display);font-weight:600;font-size:.92rem;color:var(--blue);
+}
+.fit-more summary::-webkit-details-marker{display:none}
+.fit-more summary::marker{content:""}
+.fit-more .fit-chevron{width:16px;height:16px;transition:transform .3s var(--ease);flex:0 0 auto}
+.fit-more[open] .fit-chevron{transform:rotate(180deg)}
+.fit-more-body{padding:2px 4px 6px;color:var(--muted);font-size:.96rem;line-height:1.65}
+.fit-more-body p{margin-bottom:10px}
+.fit-more-body p:last-child{margin-bottom:0}
+.fit-more-body strong{color:var(--ink)}
+.fit-more[open] .fit-more-body{animation:fitFade .35s var(--ease)}
+@keyframes fitFade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.fit-takeaway{text-align:center;max-width:42em;margin:38px auto 0;font-family:var(--display);font-weight:700;font-size:1.08rem;color:var(--blue-ink);line-height:1.5}
+.fit-takeaway span{color:var(--orange)}
+@media(max-width:860px){
+  .fit-grid{grid-template-columns:1fr}
+  .fit{padding:78px 0}
+  .fit-card{padding:32px 26px 28px}
+}
+
 /* ===== Final ===== */
 .final{background:linear-gradient(150deg,var(--blue),#124f80);color:#fff;text-align:center;border-radius:44px;margin:0 16px 30px;overflow:hidden;position:relative}
 .final::before{content:"";position:absolute;width:60vw;height:60vw;top:-30vw;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(255,145,0,.25),transparent 60%)}
@@ -939,7 +998,59 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
   </div>
 </section>
 
+<!-- FÜR WEN GEEIGNET -->
+<section class="fit">
+  <div class="wrap">
+    <div class="fit-head reveal">
+      <span class="sec-eyebrow">Passt das zu dir?</span>
+      <h2 class="sec-h">Für wen Videocoaching das Richtige ist – und für wen nicht</h2>
+      <p class="lede" style="margin:0 auto">Damit du gleich weißt, ob wir zueinander passen.</p>
+    </div>
 
+    <div class="fit-grid">
+
+      <div class="fit-card yes reveal">
+        <span class="fit-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Geeignet für</span>
+        <h3>Für wen ist Videocoaching geeignet?</h3>
+        <p class="fit-lede">Für Unternehmen und Menschen, die zeigen wollen, was wirklich in ihnen steckt.</p>
+        <ul class="fit-points">
+          <li><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Mittelständische Unternehmen &amp; Teams</li>
+          <li><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Unternehmer, Geschäftsführer &amp; Experten</li>
+          <li><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Menschen, die Kompetenz, Persönlichkeit &amp; Leistungen sichtbar machen wollen</li>
+        </ul>
+        <details class="fit-more">
+          <summary>Mehr erfahren<svg class="fit-chevron" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="fit-more-body">
+            <p>Videocoaching ist für Unternehmen, Unternehmer, Geschäftsführer, Teams und Experten, die professionell und authentisch mit Video sichtbar werden möchten. Besonders für Mittelstand, Dienstleister, Handwerk, Industrie und Familienunternehmen.</p>
+            <p>Michael begleitet dabei von der ersten Idee über Storytelling und Videocoaching bis zur fertigen Videoproduktion.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="fit-card no reveal d1">
+        <span class="fit-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>Nicht geeignet für</span>
+        <h3>Für wen ist Videocoaching nicht geeignet?</h3>
+        <p class="fit-lede">Für Menschen, die sich nicht zeigen möchten – und für private Filmprojekte.</p>
+        <ul class="fit-points">
+          <li><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span>Wer sich oder sein Unternehmen nicht vor der Kamera zeigen möchte</li>
+          <li><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span>Wer keine Menschen, Persönlichkeit oder Geschichten sichtbar machen möchte</li>
+          <li><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span>Hochzeiten, Kinder- und private Familienfilme</li>
+        </ul>
+        <details class="fit-more">
+          <summary>Mehr erfahren<svg class="fit-chevron" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+          <div class="fit-more-body">
+            <p>Michael ist spezialisiert auf <strong>Business-Videocoaching und Unternehmensvideos</strong>.</p>
+            <p>Wer sich grundsätzlich nicht zeigen möchte, ist bei ihm nicht richtig. Denn seine Arbeit lebt davon, die Menschen, Kompetenz und Persönlichkeit eines Unternehmens sichtbar zu machen.</p>
+            <p>Michael ist außerdem <strong>kein Hochzeitsvideograf und kein Anbieter für Kinder- oder private Familienfilme</strong>.</p>
+          </div>
+        </details>
+      </div>
+
+    </div>
+
+    <p class="fit-takeaway reveal d2">Kurz gesagt: Michael Kleinert ist <span>Videocoach für Unternehmen und Business-Videos</span> – nicht Hochzeits- oder Familienvideograf.</p>
+  </div>
+</section>
 
 <!-- TESTIMONIALS -->
 <section class="testi" id="kundenstimmen" style="background:var(--mist)">
