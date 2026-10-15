@@ -416,6 +416,7 @@ section{padding:100px 0;position:relative}
 .cine-photo img{position:relative;width:100%;max-width:300px;height:auto;display:block;border-radius:20px;box-shadow:0 26px 50px -18px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.08);will-change:transform;animation:floaty 6s ease-in-out infinite}
 @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 /* ===== Solution timeline ===== */
 .solution-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:56px;align-items:start}
 .tl-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px}
@@ -1044,10 +1045,10 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
     <div class="solution-grid">
       <div class="timeline reveal d1">
         <div class="tl-head"><span class="big" data-count="30">30</span><span class="lbl">Minuten.<br>Vier einfache Schritte.</span></div>
-        <div class="step"><span class="num">1</span><span class="stime">5 Minuten</span><h3>Kurz ankommen</h3><p>Dreimal tief durchatmen und klären: „Wem möchte ich helfen?“ Der Fokus wandert von dir weg – hin zu deinem Zuschauer.</p></div>
-        <div class="step"><span class="num">2</span><span class="stime">10 Minuten</span><h3>Deine Botschaft in 3 Stichpunkten</h3><p>Kein Text zum Ablesen, kein Auswendiglernen. Drei Stichworte geben dir Sicherheit – und es bleibt natürlich.</p></div>
-        <div class="step"><span class="num">3</span><span class="stime">10 Minuten</span><h3>Aufnahme mit dem Smartphone</h3><p>Gutes Licht, Handy auf Augenhöhe, sprechen wie mit einer Person. Kleine Versprecher? Wirken sympathisch.</p></div>
-        <div class="step"><span class="num">4</span><span class="stime">5 Minuten</span><h3>Gegenchecken &amp; posten</h3><p>Klingt es nach dir? Dann raus damit. Nicht auf perfekt warten – dein zweiter Versuch ist schon gut genug.</p></div>
+        <div class="step"><span class="num"><span class="sr-only">Schritt </span>1<span class="sr-only"> – </span></span><span class="stime">5 Minuten</span><h3>Kurz ankommen</h3><p>Dreimal tief durchatmen und klären: „Wem möchte ich helfen?“ Der Fokus wandert von dir weg – hin zu deinem Zuschauer.</p></div>
+        <div class="step"><span class="num"><span class="sr-only">Schritt </span>2<span class="sr-only"> – </span></span><span class="stime">10 Minuten</span><h3>Deine Botschaft in 3 Stichpunkten</h3><p>Kein Text zum Ablesen, kein Auswendiglernen. Drei Stichworte geben dir Sicherheit – und es bleibt natürlich.</p></div>
+        <div class="step"><span class="num"><span class="sr-only">Schritt </span>3<span class="sr-only"> – </span></span><span class="stime">10 Minuten</span><h3>Aufnahme mit dem Smartphone</h3><p>Gutes Licht, Handy auf Augenhöhe, sprechen wie mit einer Person. Kleine Versprecher? Wirken sympathisch.</p></div>
+        <div class="step"><span class="num"><span class="sr-only">Schritt </span>4<span class="sr-only"> – </span></span><span class="stime">5 Minuten</span><h3>Gegenchecken &amp; posten</h3><p>Klingt es nach dir? Dann raus damit. Nicht auf perfekt warten – dein zweiter Versuch ist schon gut genug.</p></div>
       </div>
       <div class="solution-copy reveal d2">
         <p>Du brauchst keine teure Technik, kein Studio und keinen auswendig gelernten Text. Du brauchst nur eine klare Struktur – und genau die bekommst du in diesem Guide.</p>
