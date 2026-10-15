@@ -290,18 +290,26 @@ body.nav-open{overflow:hidden}
 .intro-kicker{display:block;font-family:var(--display);font-weight:700;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
 .intro-copy h1{font-size:clamp(2.1rem,4.2vw,3.3rem);margin-bottom:16px;letter-spacing:-.03em;color:var(--blue-ink)}
 .intro-copy .sub{font-size:1.14rem;color:var(--muted);max-width:38em;margin-bottom:30px;line-height:1.6}
-.intro-visual{position:relative}
+.intro-visual{position:relative;display:flex;justify-content:center}
 .intro-video{
-  position:relative;aspect-ratio:16/9;border-radius:24px;overflow:hidden;
+  position:relative;aspect-ratio:9/16;width:min(100%,320px);border-radius:24px;overflow:hidden;
   background:linear-gradient(135deg,var(--blue),var(--blue-deep));
   box-shadow:var(--shadow-xl);display:flex;align-items:center;justify-content:center;
   border:7px solid #fff;
 }
-.intro-video::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 28% 28%,rgba(255,255,255,.16),transparent 60%)}
+.intro-video-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:0}
+.intro-video::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(15,47,77,0) 45%,rgba(15,47,77,.55))}
+.intro-video-btn{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;background:none;border:0;padding:0;cursor:pointer}
+.intro-video-btn:hover .intro-video-play{transform:scale(1.08)}
+.intro-video-btn:focus-visible{outline:3px solid var(--orange);outline-offset:-6px}
+.intro-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3}
+.intro-video .video-consent{z-index:4;padding:22px;gap:14px}
+.intro-video .video-consent p{font-size:.82rem}
+.intro-video .video-consent .cta-btn{font-size:.9rem;padding:12px 18px}
 .intro-video-play{
   position:relative;width:72px;height:72px;border-radius:50%;
-  background:rgba(255,255,255,.16);backdrop-filter:blur(6px);
-  display:grid;place-items:center;color:#fff;z-index:2;
+  background:var(--cta);box-shadow:0 14px 30px -10px rgba(255,107,0,.7);
+  display:grid;place-items:center;color:#fff;z-index:2;transition:transform .25s var(--ease);
 }
 .intro-video-play::before{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid rgba(255,255,255,.5);animation:ping 2.4s var(--ease) infinite}
 .intro-video-label{
@@ -761,9 +769,12 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
       </a>
     </div>
     <div class="intro-visual hero-anim" style="--i:2">
-      <div class="intro-video">
-        <div class="intro-video-play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-        <span class="intro-video-label">Werbevideo folgt in K&uuml;rze</span>
+      <div class="intro-video" id="introVideo">
+        <img class="intro-video-poster" src="assets/michael-kleinert-beim-filmen-mit-dem-sma.jpg" alt="Michael Kleinert beim Filmen mit dem Smartphone">
+        <button type="button" class="intro-video-btn" onclick="playIntroVideo()" aria-label="Video abspielen: Michael Kleinert stellt sich vor">
+          <span class="intro-video-play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="intro-video-label">Video ansehen</span>
+        </button>
       </div>
     </div>
   </div>
@@ -1335,7 +1346,7 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
   <div class="cookie-inner">
     <div class="cookie-text">
       <b>Cookies &amp; externe Inhalte</b>
-      <p>Diese Seite verwendet nur technisch notwendige Funktionen. Für die eingebetteten Vimeo-Videos werden – erst wenn du sie aktiv abspielst bzw. hier zustimmst – Daten an Vimeo übertragen. Mehr dazu in der <a href="rechtliches.html#datenschutz">Datenschutzerklärung</a>.</p>
+      <p>Diese Seite verwendet nur technisch notwendige Funktionen. Für die eingebetteten Videos (YouTube und Vimeo) werden – erst wenn du sie aktiv abspielst bzw. hier zustimmst – Daten an Google bzw. Vimeo übertragen. Mehr dazu in der <a href="rechtliches.html#datenschutz">Datenschutzerklärung</a>.</p>
     </div>
     <div class="cookie-actions">
       <button class="cookie-btn ghost" id="cookieReject" type="button">Nur notwendige</button>
@@ -1491,6 +1502,21 @@ function openVideo(id,title){
     document.getElementById('loadVideoBtn').addEventListener('click',function(){videoConsentSession=true;slot.innerHTML=vimeoIframe(id,title);});
   }
   lb.classList.add('show');document.body.style.overflow='hidden';
+}
+/* Video im Hauptbanner (YouTube, erweiterter Datenschutzmodus, erst nach Einwilligung) */
+var INTRO_YT_ID='ec-qw7Z_cTQ';
+function playIntroVideo(){
+  var box=document.getElementById('introVideo');
+  function load(){
+    box.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+INTRO_YT_ID+'?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="Michael Kleinert – Video" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>';
+  }
+  if(hasMediaConsent()||videoConsentSession){load();return;}
+  if(box.querySelector('.video-consent'))return;
+  var c=document.createElement('div');
+  c.className='video-consent';
+  c.innerHTML='<p>Zum Abspielen wird eine Verbindung zu YouTube (Google Ireland Limited) hergestellt. Dabei können Daten an Google übertragen werden. Mehr dazu in der <a href="rechtliches.html#datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p><button class="cta-btn" type="button"><span>Video laden &amp; abspielen</span></button>';
+  c.querySelector('button').addEventListener('click',function(){videoConsentSession=true;load();});
+  box.appendChild(c);
 }
 function closeVideo(){var lb=document.getElementById('lightbox');lb.classList.remove('show');document.getElementById('lbSlot').innerHTML='';document.body.style.overflow='';}
 document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeVideo();});
