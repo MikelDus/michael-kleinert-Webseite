@@ -469,8 +469,12 @@ section{padding:100px 0;position:relative}
 .trio-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;color:var(--cta);box-shadow:var(--shadow-lg);transition:transform .25s var(--ease),background .25s var(--ease)}
 .trio-ask{text-align:center;margin-top:46px}
 .trio-ask-q{font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,2.2vw,1.45rem);color:var(--blue-ink);line-height:1.35;max-width:30em;margin:0 auto 22px}
-.wa-btn{display:inline-flex;align-items:center;gap:11px;background:#169948;color:#fff;font-family:var(--display);font-weight:700;font-size:1.17rem;padding:15px 28px;border-radius:14px;text-decoration:none;box-shadow:0 16px 34px -12px rgba(22,153,72,.6);transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease)}
-.wa-btn:hover{background:#128a41;transform:translateY(-2px);box-shadow:0 22px 44px -12px rgba(22,153,72,.65)}
+.wa-btn{display:inline-flex;align-items:center;gap:11px;background:#108040;color:#fff;font-family:var(--display);font-weight:700;font-size:1.17rem;padding:15px 28px;border-radius:14px;text-decoration:none;box-shadow:0 16px 34px -12px rgba(16,128,64,.55);transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease)}
+.wa-btn:hover{background:#0d7339;transform:translateY(-2px);box-shadow:0 22px 44px -12px rgba(16,128,64,.6)}
+.wa-btn.wa-sm{font-size:1.02rem;padding:15px 24px}
+.intro-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.contact-wa{margin-top:24px}
+@media(max-width:560px){.intro-actions .cta-btn,.intro-actions .wa-btn{width:100%;justify-content:center}}
 .wa-btn:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
 .trio .trio-item:hover .trio-play{transform:translate(-50%,-50%) scale(1.08);background:#fff}
 
@@ -770,10 +774,16 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
       <span class="intro-kicker hero-anim" style="--i:0">Videocoach &amp; Videoproduktion · Düsseldorf / NRW</span>
       <h1 class="hero-anim" style="--i:1">Vom ersten Gedanken zum fertigen Video.</h1>
       <p class="sub hero-anim" style="--i:2">Ich begleite dich und dein Team Hand in Hand zum Unternehmensvideo, das zeigt, wer ihr wirklich seid – echt, hochwertig und ohne Stress für euch.</p>
-      <a href="#kontakt" class="cta-btn hero-anim" style="--i:3">
+      <div class="intro-actions hero-anim" style="--i:3">
+      <a href="#kontakt" class="cta-btn">
         <span>Reden wir über dein Videoprojekt!</span>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+      <a class="wa-btn wa-sm" href="https://wa.me/491705847102" target="_blank" rel="noopener" aria-label="Per WhatsApp schreiben">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.47 9.48-9.47a9.4 9.4 0 0 1 6.7 2.78 9.4 9.4 0 0 1 2.77 6.7c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.53A11.33 11.33 0 0 0 12.04.63C5.76.63.65 5.74.65 12.02c0 2.01.52 3.97 1.52 5.7L.55 23.63l6.05-1.59a11.36 11.36 0 0 0 5.44 1.39h.01c6.28 0 11.39-5.11 11.39-11.39 0-3.04-1.19-5.9-3.34-8.06z"/></svg>
+        <span>Per WhatsApp schreiben</span>
+      </a>
+      </div>
     </div>
     <div class="intro-visual hero-anim" style="--i:2">
       <div class="intro-video" id="introVideo">
@@ -1254,6 +1264,10 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
           <span><b>Region</b><br>Düsseldorf · Rheinland/NRW</span>
         </div>
       </div>
+      <a class="wa-btn wa-sm contact-wa" href="https://wa.me/491705847102" target="_blank" rel="noopener" aria-label="Per WhatsApp schreiben">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 0 1-4.82-1.32l-.35-.21-3.58.94.96-3.49-.23-.36a9.43 9.43 0 0 1-1.45-5.03c0-5.22 4.25-9.47 9.48-9.47a9.4 9.4 0 0 1 6.7 2.78 9.4 9.4 0 0 1 2.77 6.7c0 5.22-4.25 9.46-9.47 9.46zm8.06-17.53A11.33 11.33 0 0 0 12.04.63C5.76.63.65 5.74.65 12.02c0 2.01.52 3.97 1.52 5.7L.55 23.63l6.05-1.59a11.36 11.36 0 0 0 5.44 1.39h.01c6.28 0 11.39-5.11 11.39-11.39 0-3.04-1.19-5.9-3.34-8.06z"/></svg>
+        <span>Per WhatsApp schreiben</span>
+      </a>
     </div>
 
     <div class="contact-card reveal d1">
