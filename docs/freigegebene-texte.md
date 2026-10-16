@@ -79,9 +79,9 @@ Diese Texte dürfen **nur nach ausdrücklicher Freigabe** geändert werden (sieh
 - Starte mit deinem ersten eigenen Video – in 30 Minuten
 - Mein kostenloser Guide zeigt dir in 4 Schritten, wie du mit dem Smartphone ein Video drehst, das nach dir klingt.
 - Hol dir jetzt deinen Gratis-Guide
-- Ein Klick – und du kannst dir den Guide sofort als PDF herunterladen. *(vorübergehend bis Brevo, Freigabe ausstehend)*
+- Ein Klick – und du kannst dir den Guide sofort als PDF herunterladen. *(vorübergehend bis Brevo, freigegeben 16.10.2026)*
 - Guide kostenlos holen
-- Ohne Anmeldung und ohne E-Mail-Adresse – einfach herunterladen. *(vorübergehend bis Brevo, Freigabe ausstehend; der Datenschutz-Hinweis kommt mit Brevo angepasst zurück)*
+- Ohne Anmeldung und ohne E-Mail-Adresse – einfach herunterladen. *(vorübergehend bis Brevo, freigegeben 16.10.2026; der Datenschutz-Hinweis kommt mit Brevo angepasst zurück)*
 - In 30 Minuten dein erstes authentisches Video
 
 ## Authentisch vor der Kamera ist lernbar – in 30 Minuten
