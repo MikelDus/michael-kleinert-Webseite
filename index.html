@@ -602,7 +602,9 @@ section{padding:100px 0;position:relative}
 .final .sec-h{color:#fff;font-size:clamp(2rem,4.2vw,3.1rem);margin-bottom:16px}
 .final p{color:#dcebf7;font-size:1.18rem;max-width:32em;margin:0 auto 32px}
 .final .cta-btn{font-size:1.08rem;padding:21px 34px}
-.final .mini{margin-top:18px;font-size:.9rem;color:#bcd3e6;display:flex;gap:8px;align-items:center;justify-content:center}
+.final .mini{margin-top:18px;font-size:.92rem;color:#bcd3e6;display:block;text-align:center;line-height:1.6}
+.final .mini a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.final .mini a:hover{color:#ffd29a}
 
 /* ===== Footer ===== */
 /* ===== CONTACT ===== */
@@ -1251,6 +1253,22 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
           </summary>
           <div class="faq-a"><p>Ja. Bewerber wollen echte Kollegen sehen, keinen Werbespot. Genau das zeigen wir.</p></div>
         </details>
+        <details>
+          <summary>
+            <span class="faq-dot"></span>
+            <span>Was kostet ein Imagefilm bzw. Unternehmensvideo?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="faq-a"><p>Der Preis richtet sich nach Aufwand und Länge des Videos – also nach Drehtagen, Anzahl der Personen und Umfang des Schnitts. Frag einfach an: Im Vorgespräch bekommst du ein klares Angebot.</p></div>
+        </details>
+        <details>
+          <summary>
+            <span class="faq-dot"></span>
+            <span>Wie lange dauert ein Videoprojekt?</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="faq-a"><p>In der Regel 2–4 Wochen vom ersten Gespräch bis zum fertigen Film.</p></div>
+        </details>
       </div>
       <div class="faq-more">
         <a href="videocoaching-erklaert.html" class="cta-btn" style="background:linear-gradient(120deg,var(--blue),var(--blue-2))">
@@ -1265,13 +1283,13 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
 <!-- FINAL -->
 <section class="final" style="padding:96px 0">
   <div class="wrap inner">
-    <h2 class="sec-h reveal">Bereit für dein erstes authentisches Video?</h2>
-    <p class="reveal d1">Hol dir jetzt den kostenlosen Guide und dreh in 30 Minuten dein erstes Video – mit dem du deine Wunschkunden wirklich erreichst.</p>
-    <div class="reveal d2"><button class="cta-btn" id="magnet2" onclick="focusLead(event)">
+    <h2 class="sec-h reveal">Bereit, dein Team zu zeigen, wie es wirklich ist?</h2>
+    <p class="reveal d1">Du bringst dein Team und eure Geschichten mit. Den Rest übernehme ich.</p>
+    <div class="reveal d2"><a href="#kontakt" class="cta-btn" id="magnet2">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>Guide kostenlos holen</span>
-    </button></div>
-    <div class="mini reveal d2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#ff9100" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>100 % kostenlos · sofort per E-Mail</div>
+      <span>Unverbindliches Erstgespräch anfragen</span>
+    </a></div>
+    <div class="mini reveal d2">Noch nicht so weit? <a href="#lead" onclick="focusLead(event)">Hol dir meinen Gratis-Guide.</a></div>
   </div>
 </section>
 
