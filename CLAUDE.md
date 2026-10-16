@@ -33,4 +33,4 @@ Branch `claude/github-repro-erstellen-gepirc` – **jeder Push geht automatisch 
   neuen Einbettungscode aus CleverReach.
 - Kontaktformular: FormSubmit an kleinert@video-coaching-produktion.de.
 - YouTube/Vimeo nur nach Klick (Datenschutz), reCAPTCHA erst bei Nutzung des Formulars.
-- WhatsApp-Links: `https://wa.me/491705847102`.
+- WhatsApp-Links: `https://wa.me/491705817102`.
