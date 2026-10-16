@@ -28,9 +28,9 @@ Branch `claude/github-repro-erstellen-gepirc` – **jeder Push geht automatisch 
 
 ## 3. Technische Fixpunkte
 
-- Guide-Formular: CleverReach-Formular `244993-431186`, Felder `1013922` (Vorname),
-  `email`, `cr_subunsubscribe=true`, reCAPTCHA-Sitekey von CleverReach. Nicht ändern ohne
-  neuen Einbettungscode aus CleverReach.
+- Guide: **vorübergehend ohne Formular** – Button führt direkt zu `danke.html` mit PDF-Download.
+  CleverReach ist gesperrt (offene Rechnung) und wird durch **Brevo** ersetzt. Bis dahin keine
+  E-Mail-Adressen sammeln. Der alte CleverReach-Formularcode steht in Commit `b3b0238`.
 - Kontaktformular: FormSubmit an kleinert@video-coaching-produktion.de.
 - YouTube/Vimeo nur nach Klick (Datenschutz), reCAPTCHA erst bei Nutzung des Formulars.
 - WhatsApp-Links: `https://wa.me/491705817102`.

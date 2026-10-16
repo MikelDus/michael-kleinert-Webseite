@@ -79,9 +79,9 @@ Diese Texte dürfen **nur nach ausdrücklicher Freigabe** geändert werden (sieh
 - Starte mit deinem ersten eigenen Video – in 30 Minuten
 - Mein kostenloser Guide zeigt dir in 4 Schritten, wie du mit dem Smartphone ein Video drehst, das nach dir klingt.
 - Hol dir jetzt deinen Gratis-Guide
-- Vorname & E-Mail eintragen – nach kurzer Bestätigung landet der Guide in deinem Postfach.
+- Ein Klick – und du kannst dir den Guide sofort als PDF herunterladen. *(vorübergehend bis Brevo, Freigabe ausstehend)*
 - Guide kostenlos holen
-- Nach dem Klick bekommst du eine Bestätigungs-E-Mail – erst nach deiner Bestätigung schicke ich dir den Guide. Der Versand erfolgt über den Anbieter CleverReach, zum Schutz vor Spam-Anmeldungen kommt Google reCAPTCHA zum Einsatz. Deine Adresse nutze ich ausschließlich für den Versand des Guides und die Kontaktaufnahme. Kein Spam. Mehr dazu im Datenschutz.
+- Ohne Anmeldung und ohne E-Mail-Adresse – einfach herunterladen. *(vorübergehend bis Brevo, Freigabe ausstehend; der Datenschutz-Hinweis kommt mit Brevo angepasst zurück)*
 - In 30 Minuten dein erstes authentisches Video
 
 ## Authentisch vor der Kamera ist lernbar – in 30 Minuten
@@ -216,9 +216,3 @@ Diese Texte dürfen **nur nach ausdrücklicher Freigabe** geändert werden (sieh
 - Ich habe die Datenschutzerklärung gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage einverstanden. *
 - Gespräch anfragen
 - * Pflichtfelder. Ich melde mich in der Regel innerhalb von 1–2 Werktagen.
-
-## Hinweise im Guide-Formular (neu am 16.10.2026, Freigabe ausstehend)
-
-- Bitte gib deinen Vornamen und eine gültige E-Mail-Adresse ein.
-- Bitte setze noch das Häkchen bei „Ich bin kein Roboter“.
-- Der Spamschutz (Google reCAPTCHA) konnte nicht geladen werden – vermutlich blockiert ihn ein Werbeblocker. Bitte lade die Seite neu, deaktiviere den Blocker kurz oder schreib mir direkt per WhatsApp.
