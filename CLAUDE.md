@@ -34,3 +34,5 @@ Branch `claude/github-repro-erstellen-gepirc` – **jeder Push geht automatisch 
 - Kontaktformular: FormSubmit an kleinert@video-coaching-produktion.de.
 - YouTube/Vimeo nur nach Klick (Datenschutz), reCAPTCHA erst bei Nutzung des Formulars.
 - WhatsApp-Links: `https://wa.me/491705817102`.
+- Firmendaten (überall identisch halten, auch für Google): Hohe Str. 35, 40213 Düsseldorf,
+  Telefon/WhatsApp 0170 5817102 (+49 170 5817102), kleinert@video-coaching-produktion.de.
