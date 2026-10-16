@@ -1026,28 +1026,19 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
     <div class="hero-visual hero-anim" style="--i:2">
       <div class="hero-form" id="lead">
         <div class="fc-title">Hol dir jetzt deinen Gratis-Guide</div>
-        <div class="fc-sub">Vorname &amp; E-Mail eintragen – nach kurzer Bestätigung landet der Guide in deinem Postfach.</div>
-        <form id="leadForm" novalidate action="https://seu2.cleverreach.com/f/244993-431186/wcs/" method="post" target="cr_confirm">
-          <div class="field"><input type="text" id="vorname" name="1013922" placeholder="Dein Vorname" autocomplete="given-name" required></div>
-          <div class="field"><input type="email" id="email" name="email" placeholder="Deine E-Mail-Adresse" autocomplete="email" required></div>
-          <input type="hidden" name="cr_subunsubscribe" value="true">
-          <div class="field cr-captcha-field">
-            <div class="g-recaptcha" data-sitekey="6Lfhcd0SAAAAAOBEHmAVEHJeRnrH8T7wPvvNzEPD"></div>
-          </div>
-          <p class="lead-err" id="leadErr" role="alert" hidden></p>
-          <button type="submit" class="cta-btn" id="magnet1">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Guide kostenlos holen</span>
-          </button>
-          <p class="privacy">Nach dem Klick bekommst du eine Bestätigungs-E-Mail – erst nach deiner Bestätigung schicke ich dir den Guide. Der Versand erfolgt über den Anbieter CleverReach, zum Schutz vor Spam-Anmeldungen kommt Google reCAPTCHA zum Einsatz. Deine Adresse nutze ich ausschließlich für den Versand des Guides und die Kontaktaufnahme. Kein Spam. Mehr dazu im <a href="rechtliches.html#datenschutz">Datenschutz</a>.</p>
-        </form>
-        <iframe name="cr_confirm" style="display:none" title="CleverReach Anmeldebestätigung"></iframe>
+        <div class="fc-sub">Ein Klick – und du kannst dir den Guide sofort als PDF herunterladen.</div>
+        <!-- Guide-Formular (CleverReach) vorübergehend deaktiviert, wird durch Brevo ersetzt. Alter Code: git show b3b0238:index.html -->
+        <a href="danke.html" class="cta-btn" id="magnet1">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Guide kostenlos holen</span>
+        </a>
+        <p class="privacy">Ohne Anmeldung und ohne E-Mail-Adresse – einfach herunterladen.</p>
         <div class="dl-card">
           <div class="dl-cover"><img src="assets/vorschau-des-video-guides.png" alt="Vorschau des Video-Guides"></div>
           <div class="dl-text">
             <span class="dl-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>PDF zum Download</span>
             <div class="dl-title">In 30 Minuten dein erstes authentisches Video</div>
-            <div class="dl-meta"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#1b75bb" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Kompakter Guide · 4 Schritte · sofort per E-Mail</div>
+            <div class="dl-meta"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#1b75bb" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Kompakter Guide · 4 Schritte · sofort als PDF</div>
           </div>
         </div>
       </div>
@@ -1616,60 +1607,8 @@ document.getElementById('lightbox').addEventListener('click',function(e){if(e.ta
 addEventListener('keydown',function(e){if(e.key==='Escape')closeVideo();});
 
 /* Lead focus */
-function focusLead(e){if(e)e.preventDefault();var em=document.getElementById('email');em.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(function(){em.focus();},400);}
+function focusLead(e){if(e)e.preventDefault();var b=document.getElementById('magnet1');b.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(function(){b.focus();},400);}
 
-/* Form */
-/* reCAPTCHA erst laden, wenn das Formular benutzt wird (keine Datenübertragung an Google bei reinem Seitenbesuch) */
-var recaptchaRequested=false,recaptchaFailed=false;
-function loadRecaptcha(){
-  if(recaptchaRequested)return;
-  recaptchaRequested=true;
-  var s=document.createElement('script');
-  s.src='https://www.google.com/recaptcha/api.js?onload=onRecaptchaReady';
-  s.async=true;s.defer=true;
-  /* Wird reCAPTCHA blockiert (z. B. Werbeblocker), kann das Formular nicht abgeschickt werden – dann klar darauf hinweisen */
-  s.onerror=function(){recaptchaFailed=true;showLeadErr('blocked');};
-  setTimeout(function(){if(typeof grecaptcha==='undefined'){recaptchaFailed=true;showLeadErr('blocked');}},10000);
-  document.head.appendChild(s);
-}
-var LEAD_ERR={
-  fields:'Bitte gib deinen Vornamen und eine gültige E-Mail-Adresse ein.',
-  captcha:'Bitte setze noch das Häkchen bei „Ich bin kein Roboter“.',
-  blocked:'Der Spamschutz (Google reCAPTCHA) konnte nicht geladen werden – vermutlich blockiert ihn ein Werbeblocker. Bitte lade die Seite neu, deaktiviere den Blocker kurz oder schreib mir direkt <a href="https://wa.me/491705817102" target="_blank" rel="noopener">per WhatsApp</a>.'
-};
-function onRecaptchaReady(){if(recaptchaFailed){recaptchaFailed=false;showLeadErr(null);}}
-function showLeadErr(k){var el=document.getElementById('leadErr');if(!el)return;if(!k){el.hidden=true;el.innerHTML='';return;}el.innerHTML=LEAD_ERR[k];el.hidden=false;if(k==='blocked'){var c=document.querySelector('.cr-captcha-field');if(c)c.classList.remove('cr-error');}}
-document.getElementById('leadForm').addEventListener('focusin',loadRecaptcha);
-document.getElementById('leadForm').addEventListener('submit',function(e){
-  var vn=document.getElementById('vorname');var em=document.getElementById('email');
-  var captchaField=document.querySelector('.cr-captcha-field');
-  var ok=true;
-  [vn,em].forEach(function(el){el.style.borderColor='';});
-  captchaField.classList.remove('cr-error');
-  showLeadErr(null);
-  if(!vn.value.trim()){vn.style.borderColor='#e04b4b';ok=false;}
-  if(!em.value||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value)){em.style.borderColor='#e04b4b';ok=false;}
-  loadRecaptcha();
-  var captchaOk=(typeof grecaptcha!=='undefined')&&typeof grecaptcha.getResponse==='function'&&grecaptcha.getResponse().length>0;
-  if(!captchaOk){captchaField.classList.add('cr-error');ok=false;}
-  if(!ok){
-    e.preventDefault();
-    showLeadErr((vn.style.borderColor||em.style.borderColor)?'fields':(recaptchaFailed?'blocked':'captcha'));
-    if(vn.style.borderColor)vn.focus();
-    else if(em.style.borderColor)em.focus();
-    else captchaField.scrollIntoView({behavior:'smooth',block:'center'});
-    return;
-  }
-  /* Gültig: Formular wird nativ im Hintergrund (verstecktes iFrame) an CleverReach gesendet */
-  setTimeout(function(){
-    var m=document.getElementById('modal');
-    m.querySelector('h3').textContent='Fast geschafft!';
-    m.querySelector('.modal p').textContent='Um die Anmeldung abzuschließen, klicke bitte auf den Link in der E-Mail, die wir dir gerade gesendet haben. (Bitte auch den Spam-Ordner checken.)';
-    m.classList.add('show');
-    vn.value='';em.value='';
-    if(typeof grecaptcha!=='undefined')grecaptcha.reset();
-  },50);
-});
 document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)this.classList.remove('show');});
 
 /* Contact form */
