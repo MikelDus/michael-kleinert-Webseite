@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+<!-- Alle Texte dieser Seite sind von Michael Kleinert freigegeben (Stand 16.10.2026, Wortlaut: docs/freigegebene-texte.md). Texte NICHT ohne ausdrückliche Freigabe ändern. -->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -231,6 +232,8 @@ body.nav-open{overflow:hidden}
 .cr-captcha-field{margin-bottom:11px}
 .cr-captcha-field .g-recaptcha>div{margin:0 auto}
 .cr-captcha-field.cr-error{box-shadow:0 0 0 3px rgba(224,75,75,.35);border-radius:4px}
+.lead-err{margin:0 0 12px;padding:10px 14px;border-radius:10px;background:#fdecec;border:1px solid #f3c2c2;color:#a12a2a;font-size:.88rem;line-height:1.45;font-weight:500}
+.lead-err a{color:#a12a2a;font-weight:700;text-decoration:underline}
 @media(max-width:480px){.cr-captcha-field{transform:scale(.9);transform-origin:0 0}}
 @media(max-width:400px){.cr-captcha-field{transform:scale(.8);transform-origin:0 0}}
 @media(max-width:340px){.cr-captcha-field{transform:scale(.7);transform-origin:0 0}}
@@ -1031,6 +1034,7 @@ footer a{color:#fff;text-decoration:none}footer a:hover{text-decoration:underlin
           <div class="field cr-captcha-field">
             <div class="g-recaptcha" data-sitekey="6Lfhcd0SAAAAAOBEHmAVEHJeRnrH8T7wPvvNzEPD"></div>
           </div>
+          <p class="lead-err" id="leadErr" role="alert" hidden></p>
           <button type="submit" class="cta-btn" id="magnet1">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span>Guide kostenlos holen</span>
@@ -1616,15 +1620,25 @@ function focusLead(e){if(e)e.preventDefault();var em=document.getElementById('em
 
 /* Form */
 /* reCAPTCHA erst laden, wenn das Formular benutzt wird (keine Datenübertragung an Google bei reinem Seitenbesuch) */
-var recaptchaRequested=false;
+var recaptchaRequested=false,recaptchaFailed=false;
 function loadRecaptcha(){
   if(recaptchaRequested)return;
   recaptchaRequested=true;
   var s=document.createElement('script');
-  s.src='https://www.google.com/recaptcha/api.js';
+  s.src='https://www.google.com/recaptcha/api.js?onload=onRecaptchaReady';
   s.async=true;s.defer=true;
+  /* Wird reCAPTCHA blockiert (z. B. Werbeblocker), kann das Formular nicht abgeschickt werden – dann klar darauf hinweisen */
+  s.onerror=function(){recaptchaFailed=true;showLeadErr('blocked');};
+  setTimeout(function(){if(typeof grecaptcha==='undefined'){recaptchaFailed=true;showLeadErr('blocked');}},10000);
   document.head.appendChild(s);
 }
+var LEAD_ERR={
+  fields:'Bitte gib deinen Vornamen und eine gültige E-Mail-Adresse ein.',
+  captcha:'Bitte setze noch das Häkchen bei „Ich bin kein Roboter“.',
+  blocked:'Der Spamschutz (Google reCAPTCHA) konnte nicht geladen werden – vermutlich blockiert ihn ein Werbeblocker. Bitte lade die Seite neu, deaktiviere den Blocker kurz oder schreib mir direkt <a href="https://wa.me/491705847102" target="_blank" rel="noopener">per WhatsApp</a>.'
+};
+function onRecaptchaReady(){if(recaptchaFailed){recaptchaFailed=false;showLeadErr(null);}}
+function showLeadErr(k){var el=document.getElementById('leadErr');if(!el)return;if(!k){el.hidden=true;el.innerHTML='';return;}el.innerHTML=LEAD_ERR[k];el.hidden=false;if(k==='blocked'){var c=document.querySelector('.cr-captcha-field');if(c)c.classList.remove('cr-error');}}
 document.getElementById('leadForm').addEventListener('focusin',loadRecaptcha);
 document.getElementById('leadForm').addEventListener('submit',function(e){
   var vn=document.getElementById('vorname');var em=document.getElementById('email');
@@ -1632,6 +1646,7 @@ document.getElementById('leadForm').addEventListener('submit',function(e){
   var ok=true;
   [vn,em].forEach(function(el){el.style.borderColor='';});
   captchaField.classList.remove('cr-error');
+  showLeadErr(null);
   if(!vn.value.trim()){vn.style.borderColor='#e04b4b';ok=false;}
   if(!em.value||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value)){em.style.borderColor='#e04b4b';ok=false;}
   loadRecaptcha();
@@ -1639,6 +1654,7 @@ document.getElementById('leadForm').addEventListener('submit',function(e){
   if(!captchaOk){captchaField.classList.add('cr-error');ok=false;}
   if(!ok){
     e.preventDefault();
+    showLeadErr((vn.style.borderColor||em.style.borderColor)?'fields':(recaptchaFailed?'blocked':'captcha'));
     if(vn.style.borderColor)vn.focus();
     else if(em.style.borderColor)em.focus();
     else captchaField.scrollIntoView({behavior:'smooth',block:'center'});
@@ -1646,7 +1662,10 @@ document.getElementById('leadForm').addEventListener('submit',function(e){
   }
   /* Gültig: Formular wird nativ im Hintergrund (verstecktes iFrame) an CleverReach gesendet */
   setTimeout(function(){
-    document.getElementById('modal').classList.add('show');
+    var m=document.getElementById('modal');
+    m.querySelector('h3').textContent='Fast geschafft!';
+    m.querySelector('.modal p').textContent='Um die Anmeldung abzuschließen, klicke bitte auf den Link in der E-Mail, die wir dir gerade gesendet haben. (Bitte auch den Spam-Ordner checken.)';
+    m.classList.add('show');
     vn.value='';em.value='';
     if(typeof grecaptcha!=='undefined')grecaptcha.reset();
   },50);
